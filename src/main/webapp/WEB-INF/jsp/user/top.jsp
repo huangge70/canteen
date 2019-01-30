@@ -11,7 +11,7 @@
     <div class="main-header">
         <div class="logo-header">
             <a href="index.jsp" class="logo">
-                Ready Dashboard
+                用户页面
             </a>
             <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
                                     </a>
                                     <a href="#">
                                         <div class="notif-img">
-                                            <img src="/static/user_assets/img/profile2.jpg" alt="Img Profile">
+                                            <img src="/static/images/kobe.jpg" alt="Img Profile">
                                         </div>
                                         <div class="notif-content">
 												<span class="block">
@@ -104,10 +104,10 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li>
                                 <div class="user-box">
-                                    <div class="u-img"><img src="/WEB-INF/images/${user.avatar}" alt="user"></div>
+                                    <div class="u-img"><img src="/static/images/kobe.jpg" alt="user"></div>
                                     <div class="u-text">
                                         <h4>${user.username}</h4>
-                                        <p class="text-muted">hello@themekita.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                    </div>
                                 </div>
                             </li>
                             <div class="dropdown-divider"></div>

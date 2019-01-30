@@ -32,9 +32,7 @@ public class UserController {
             return "index";
         }else{//参数校验通过
             String filename=file.getOriginalFilename();
-            String classpath=request.getServletContext().getRealPath("/");
-            System.out.println(classpath+"static/images/"+filename);
-            File destFile = new File(classpath+"WEB-INF\\images\\"+filename);
+            File destFile = new File("G:\\idea_workspace\\canteen\\src\\main\\resources\\static\\images\\"+filename);
             try {
                 file.transferTo(destFile);
             } catch (IOException e) {//图片上传失败
@@ -62,6 +60,7 @@ public class UserController {
             return "index";
         }
         User selUser=userService.selectByParam(user);
+        System.out.print(selUser.toString());
        if(selUser==null){//没有在数据库中查询到用户
            model.addAttribute("message","用户名或密码错误，请稍后重试！");
            return "index";

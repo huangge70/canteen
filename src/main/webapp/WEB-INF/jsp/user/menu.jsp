@@ -12,7 +12,9 @@
         <div class="scrollbar-inner sidebar-wrapper">
             <div class="user">
                 <div class="photo">
-                    <img src="/WEB-INF/images/${user.avatar}">
+
+                    <img src="/static/images/kobe.jpg">
+
                 </div>
                 <div class="info">
                     <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
