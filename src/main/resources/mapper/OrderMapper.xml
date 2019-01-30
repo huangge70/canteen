@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.canteen.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.canteen.pojo.Order" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orderer" property="orderer" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="delivery" property="delivery" jdbcType="INTEGER" />
+    <result column="reward" property="reward" jdbcType="DOUBLE" />
+    <result column="ophone" property="ophone" jdbcType="VARCHAR" />
+    <result column="dphone" property="dphone" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderer, createtime, price, status, address, delivery, reward, ophone, dphone, 
+    updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.canteen.pojo.Order" >
+    insert into order (id, orderer, createtime, 
+      price, status, address, 
+      delivery, reward, ophone, 
+      dphone, updatetime)
+    values (#{id,jdbcType=INTEGER}, #{orderer,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{price,jdbcType=DOUBLE}, #{status,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{delivery,jdbcType=INTEGER}, #{reward,jdbcType=DOUBLE}, #{ophone,jdbcType=VARCHAR}, 
+      #{dphone,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.canteen.pojo.Order" >
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderer != null" >
+        orderer,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="delivery != null" >
+        delivery,
+      </if>
+      <if test="reward != null" >
+        reward,
+      </if>
+      <if test="ophone != null" >
+        ophone,
+      </if>
+      <if test="dphone != null" >
+        dphone,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderer != null" >
+        #{orderer,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery != null" >
+        #{delivery,jdbcType=INTEGER},
+      </if>
+      <if test="reward != null" >
+        #{reward,jdbcType=DOUBLE},
+      </if>
+      <if test="ophone != null" >
+        #{ophone,jdbcType=VARCHAR},
+      </if>
+      <if test="dphone != null" >
+        #{dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.canteen.pojo.Order" >
+    update order
+    <set >
+      <if test="orderer != null" >
+        orderer = #{orderer,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery != null" >
+        delivery = #{delivery,jdbcType=INTEGER},
+      </if>
+      <if test="reward != null" >
+        reward = #{reward,jdbcType=DOUBLE},
+      </if>
+      <if test="ophone != null" >
+        ophone = #{ophone,jdbcType=VARCHAR},
+      </if>
+      <if test="dphone != null" >
+        dphone = #{dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.canteen.pojo.Order" >
+    update order
+    set orderer = #{orderer,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      price = #{price,jdbcType=DOUBLE},
+      status = #{status,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      delivery = #{delivery,jdbcType=INTEGER},
+      reward = #{reward,jdbcType=DOUBLE},
+      ophone = #{ophone,jdbcType=VARCHAR},
+      dphone = #{dphone,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

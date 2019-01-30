@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.canteen.dao.VoteMapper" >
+  <resultMap id="BaseResultMap" type="com.canteen.pojo.Vote" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="did" property="did" jdbcType="INTEGER" />
+    <result column="dname" property="dname" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, did, dname, count, date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from vote
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from vote
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.canteen.pojo.Vote" >
+    insert into vote (id, did, dname, 
+      count, date)
+    values (#{id,jdbcType=INTEGER}, #{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR}, 
+      #{count,jdbcType=INTEGER}, #{date,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.canteen.pojo.Vote" >
+    insert into vote
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="dname != null" >
+        dname,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="dname != null" >
+        #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.canteen.pojo.Vote" >
+    update vote
+    <set >
+      <if test="did != null" >
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="dname != null" >
+        dname = #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.canteen.pojo.Vote" >
+    update vote
+    set did = #{did,jdbcType=INTEGER},
+      dname = #{dname,jdbcType=VARCHAR},
+      count = #{count,jdbcType=INTEGER},
+      date = #{date,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
