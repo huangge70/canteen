@@ -1,12 +1,18 @@
 package com.canteen.pojo;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+
 public class Dish {
     private Integer id;
 
+    @NotBlank(message = "菜品名称不能为空！")
     private String name;
 
     private String type;
 
+    @NotNull(message = "价格不能为空！")
     private Double price;
 
     private String picture;

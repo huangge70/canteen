@@ -21,9 +21,9 @@
                 <h5 class="centered">Admin</h5>
 
                 <li class="mt">
-                    <a class="active" href="index.html">
+                    <a class="active" href="/menu/selectAll">
                         <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
+                        <span>菜单管理</span>
                     </a>
                 </li>
 
@@ -76,7 +76,7 @@
                         <span>Data Tables</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="basic_table.html">Basic Table</a></li>
+                        <li><a  href="menumanagement.jsp">Basic Table</a></li>
                         <li><a  href="responsive_table.html">Responsive Table</a></li>
                     </ul>
                 </li>
