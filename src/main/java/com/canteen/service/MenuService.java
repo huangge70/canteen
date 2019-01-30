@@ -1,11 +1,12 @@
 package com.canteen.service;
 
 import com.canteen.pojo.Dish;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
 public interface MenuService {
-    List<Dish> selectAll();
+    PageInfo<Dish> selectAll(int pageNo, int pageSize);
 
     int insert(Dish dish);
 

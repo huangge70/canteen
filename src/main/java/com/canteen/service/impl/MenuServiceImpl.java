@@ -3,6 +3,8 @@ package com.canteen.service.impl;
 import com.canteen.dao.DishMapper;
 import com.canteen.pojo.Dish;
 import com.canteen.service.MenuService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,12 @@ public class MenuServiceImpl implements MenuService {
     private DishMapper dishMapper;
 
     @Override
-    public List<Dish> selectAll() {
-        return dishMapper.selectAll();
+    public PageInfo<Dish> selectAll(int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        List<Dish> list = dishMapper.selectAll();
+        //用PageInfo对结果进行包装
+        PageInfo<Dish> page = new PageInfo<Dish>(list);
+        return page;
     }
 
     @Override

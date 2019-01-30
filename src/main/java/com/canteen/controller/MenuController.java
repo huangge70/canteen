@@ -3,6 +3,7 @@ package com.canteen.controller;
 import com.canteen.pojo.Dish;
 import com.canteen.pojo.User;
 import com.canteen.service.MenuService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +24,9 @@ public class MenuController {
     private MenuService menuService;
 
    @RequestMapping("/selectAll")
-   public String selectMenu(Model model){
-        model.addAttribute("menu",menuService.selectAll());
+   public String selectMenu(Model model,@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
+        PageInfo<Dish> page = menuService.selectAll(pageNo,pageSize);
+        model.addAttribute("pageInfo",page);
         return "admin/menumanagement";
    }
 

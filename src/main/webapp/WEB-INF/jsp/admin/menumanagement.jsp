@@ -70,7 +70,7 @@
                               </tr>
                               </thead>
                               <tbody>
-                              <c:forEach items="${menu}" var="dish">
+                              <c:forEach items="${pageInfo.list}" var="dish">
                                   <tr>
                                       <td>${dish.id}</td>
                                       <td class="hidden-phone">${dish.name}</td>
@@ -86,6 +86,19 @@
                               </c:forEach>
                               </tbody>
                           </table>
+
+                          <div class="showback">
+                              <div class="btn-group">
+                                  <a type="button" class="btn btn-default" href="/menu/selectAll">首页</a>
+                                  <a type="button" class="btn btn-default" href="/menu/selectAll?pageNo=${pageInfo.prePage}">上一页</a>
+                                  <c:forEach var="pageNo" begin="1" end="${pageInfo.pages}">
+                                    <a type="button" class="btn btn-default" href="/menu/selectAll?pageNo=${pageNo}">${pageNo}</a>
+                                  </c:forEach>
+                                  <a type="button" class="btn btn-default" href="/menu/selectAll?pageNo=${pageInfo.nextPage}">下一页</a>
+                                  <a type="button" class="btn btn-default" href="/menu/selectAll?pageNo=${pageInfo.pages}">尾页</a>
+                              </div>
+                          </div><!-- /showback -->
+
                       </div><!-- /content-panel -->
                   </div><!-- /col-md-12 -->
               </div><!-- /row -->
