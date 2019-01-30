@@ -10,4 +10,8 @@ public interface MenuService {
     int insert(Dish dish);
 
     int delete(Integer id);
+
+    Dish selectById(Integer id);
+
+    int update(Dish dish);
 }

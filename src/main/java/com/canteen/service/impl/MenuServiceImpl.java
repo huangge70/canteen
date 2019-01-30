@@ -26,4 +26,14 @@ public class MenuServiceImpl implements MenuService {
     public int delete(Integer id) {
         return dishMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public Dish selectById(Integer id) {
+        return dishMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int update(Dish dish) {
+        return dishMapper.updateByPrimaryKeySelective(dish);
+    }
 }

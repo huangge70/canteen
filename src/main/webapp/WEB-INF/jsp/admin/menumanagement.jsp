@@ -79,7 +79,7 @@
                                       <td><img src="/static/images/${dish.picture}" alt="${dish.name}" width="50px" height="50px"> </td>
                                       <td>${dish.description} </td>
                                       <td>
-                                          <a class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                          <a class="btn btn-primary btn-xs" href="/menu/selectById?id=${dish.id}"><i class="fa fa-pencil"></i></a>
                                           <a class="btn btn-danger btn-xs" href="/menu/delete?id=${dish.id}"><i class="fa fa-trash-o "></i></a>
                                       </td>
                                   </tr>

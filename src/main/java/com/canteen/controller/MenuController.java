@@ -68,4 +68,25 @@ public class MenuController {
             return "admin/menumanagement";
         }
    }
+
+   @RequestMapping("/selectById")
+   public String selectById(Model model,HttpServletRequest request){
+        int id=Integer.parseInt(request.getParameter("id"));
+        Dish dish=menuService.selectById(id);
+        model.addAttribute("dish",dish);
+        return "admin/updatedish";
+   }
+
+   @RequestMapping("/update")
+   public String update(Model model,Dish dish){
+        System.out.println(dish);
+        int result=menuService.update(dish);
+        if(result==1){//修改成功
+            model.addAttribute("message","修改成功！");
+            return "redirect:/menu/selectAll";
+        }else{
+            model.addAttribute("message","修改失败！");
+            return "admin/menumanagement";
+        }
+   }
 }
