@@ -146,4 +146,9 @@
     and password = #{password}
     and role=#{role}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+  </select>
 </mapper>

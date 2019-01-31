@@ -1,7 +1,9 @@
 package com.canteen.controller;
 
+import com.canteen.pojo.Dish;
 import com.canteen.pojo.User;
 import com.canteen.service.UserService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -89,6 +91,43 @@ public class UserController {
     public String userLogout(HttpServletRequest request){
         request.getSession().removeAttribute("user");
         return "index";
+    }
+
+    @RequestMapping("/selectAll")
+    public String selectAll(Model model,@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
+        PageInfo<User> page = userService.selectAll(pageNo,pageSize);
+        model.addAttribute("pageInfo",page);
+        return "admin/usermanagement";
+    }
+
+    @RequestMapping("/disableuser")
+    public String disableuser(Integer id,Model model){
+        User user=new User();
+        user.setId(id);
+        user.setStatus(0);
+        int result=userService.updateUser(user);
+        if(result==1){//修改成功
+            model.addAttribute("message","修改成功！");
+            return "forward:/user/selectAll";
+        }else{//修改失败
+            model.addAttribute("message","修改失败！");
+            return "admin/usermanagement";
+        }
+    }
+
+    @RequestMapping("/enableuser")
+    public String enableuser(Integer id,Model model){
+        User user=new User();
+        user.setId(id);
+        user.setStatus(1);
+        int result=userService.updateUser(user);
+        if(result==1){//修改成功
+            model.addAttribute("message","修改成功！");
+            return "forward:/user/selectAll";
+        }else{//修改失败
+            model.addAttribute("message","修改失败！");
+            return "admin/usermanagement";
+        }
     }
 
     public static void main(String[] args){

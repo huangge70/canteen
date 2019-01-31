@@ -28,15 +28,10 @@
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="/user/selectAll" >
                         <i class="fa fa-desktop"></i>
-                        <span>UI Elements</span>
+                        <span>用户管理</span>
                     </a>
-                    <ul class="sub">
-                        <li><a  href="general.html">General</a></li>
-                        <li><a  href="buttons.html">Buttons</a></li>
-                        <li><a  href="panels.html">Panels</a></li>
-                    </ul>
                 </li>
 
                 <li class="sub-menu">
@@ -98,5 +93,17 @@
     <!--sidebar end-->
     <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
 
+    <script type="text/javascript">
+        $(function() {
+            $("a").click(function() {
+                // 第一种方法
+                // $("li").removeClass("active");//删除指定的 class 属性
+                // $(this).addClass("active");//向被选元素添加一个或多个类
+                // $(this).toggleClass("active");//该函数会对被选元素进行添加/删除类的切换操作
+                //或者使用第二种方法
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+        })
+    </script>
     </body>
 </html>

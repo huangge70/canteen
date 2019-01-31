@@ -50,7 +50,7 @@ public class MenuController {
            int result=menuService.insert(dish);
            if(result==1){
                model.addAttribute("message","新增成功！");
-               return "redirect:/menu/selectAll";
+               return "forward:/menu/selectAll";
            } else{//向数据库中插入用户失败
                model.addAttribute("message","新增失败！");
                return "admin/menumanagement";
@@ -64,7 +64,7 @@ public class MenuController {
         int result=menuService.delete(id);
         if(result==1){//删除成功的情况
             model.addAttribute("message","删除成功！");
-            return "redirect:/menu/selectAll";
+            return "forward:/menu/selectAll";
         }else{//删除失败的情况
             model.addAttribute("message","删除失败！");
             return "admin/menumanagement";
@@ -85,7 +85,7 @@ public class MenuController {
         int result=menuService.update(dish);
         if(result==1){//修改成功
             model.addAttribute("message","修改成功！");
-            return "redirect:/menu/selectAll";
+            return "forward:/menu/selectAll";
         }else{
             model.addAttribute("message","修改失败！");
             return "admin/menumanagement";
