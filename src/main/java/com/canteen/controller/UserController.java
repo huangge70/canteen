@@ -44,6 +44,7 @@ public class UserController {
             user.setAvatar(filename);//设置用户头像图片名
             user.setRole(1);//设置用户角色为普通用户
             user.setStatus(0);//设置用户状态为不可用
+            user.setBalance(0d);//设置用户初始余额为0
             int result=userService.insertUser(user);
             if(result==1){
                 model.addAttribute("message","注册成功，请等待管理员审核！");
@@ -127,6 +128,30 @@ public class UserController {
         }else{//修改失败
             model.addAttribute("message","修改失败！");
             return "admin/usermanagement";
+        }
+    }
+
+    @RequestMapping("/selectById")
+    public String selectById(){
+        return "user/personal";
+    }
+
+    @RequestMapping("/update")
+    public String update(User user,Model model,HttpServletRequest request){
+        user.setUsername(user.getUsername().split(",")[0]);
+        System.out.println(user.getUsername());
+        int result=userService.updateUser(user);
+        if(result==1){//修改成功
+            User sessionUser= (User) request.getSession().getAttribute("user");
+            sessionUser.setPassword(user.getPassword());
+            sessionUser.setRealname(user.getRealname());
+            sessionUser.setPhone(user.getPhone());
+            sessionUser.setAddress(user.getAddress());
+            model.addAttribute("message","修改成功！");
+            return "user/personal";
+        }else{//修改失败
+            model.addAttribute("message","修改失败！");
+            return "user/personal";
         }
     }
 

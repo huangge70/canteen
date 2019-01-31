@@ -11,9 +11,10 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="balance" property="balance" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, password, role, realname, phone, status, address, avatar
+    id, username, password, role, realname, phone, status, address, avatar,balance
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,11 +29,11 @@
   <insert id="insert" parameterType="com.canteen.pojo.User" >
     insert into user (id, username, password, 
       role, realname, phone, 
-      status, address, avatar
+      status, address, avatar,balance
       )
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{role,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}
+      #{status,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR},#{balance,jdbcType=DOUBLE}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.canteen.pojo.User" >
@@ -65,6 +66,9 @@
       <if test="avatar != null" >
         avatar,
       </if>
+      <if test="balance != null" >
+        balance,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -93,6 +97,9 @@
       </if>
       <if test="avatar != null" >
         #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -123,6 +130,9 @@
       <if test="avatar != null" >
         avatar = #{avatar,jdbcType=VARCHAR},
       </if>
+      <if test="balance != null" >
+        avatar = #{balance,jdbcType=DOUBLE},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -135,7 +145,8 @@
       phone = #{phone,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       address = #{address,jdbcType=VARCHAR},
-      avatar = #{avatar,jdbcType=VARCHAR}
+      avatar = #{avatar,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=DOUBLE},
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByParam" parameterType="com.canteen.pojo.User" resultMap="BaseResultMap">

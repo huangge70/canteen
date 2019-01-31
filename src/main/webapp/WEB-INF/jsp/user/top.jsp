@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -74,7 +78,7 @@
                                     </a>
                                     <a href="#">
                                         <div class="notif-img">
-                                            <img src="/static/images/kobe.jpg" alt="Img Profile">
+                                            <img src="/static/images/${user.avatar}" alt="Img Profile">
                                         </div>
                                         <div class="notif-content">
 												<span class="block">
@@ -100,22 +104,10 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="/static/user_assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >Hizrian</span></span> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="/static/user_assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >${user.username}</span></span> </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li>
-                                <div class="user-box">
-                                    <div class="u-img"><img src="/static/images/kobe.jpg" alt="user"></div>
-                                    <div class="u-text">
-                                        <h4>${user.username}</h4>
-                                    </div>
-                                </div>
-                            </li>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="ti-user"></i> My Profile</a>
-                            <a class="dropdown-item" href="#"></i> My Balance</a>
-                            <a class="dropdown-item" href="#"><i class="ti-email"></i> Inbox</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>
+                            <a class="dropdown-item" href="/user/selectById"><i class="ti-settings"></i> Personal</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/user/userLogout"><i class="fa fa-power-off"></i> Logout</a>
                         </ul>
