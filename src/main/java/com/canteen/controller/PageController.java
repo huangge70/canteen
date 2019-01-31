@@ -19,4 +19,9 @@ public class PageController {
     public String userindex(){
         return "user/index";
     }
+
+    @RequestMapping("/result")
+    public String result(){
+        return "admin/result";
+    }
 }

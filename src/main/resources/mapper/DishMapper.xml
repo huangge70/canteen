@@ -119,4 +119,10 @@
     <include refid="Base_Column_List" />
     from dish
   </select>
+  <select id="selectActive" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from dish
+    where status=1
+  </select>
 </mapper>

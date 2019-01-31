@@ -29,9 +29,9 @@
             </div>
             <ul class="nav">
                 <li class="nav-item active">
-                    <a href="index.jsp">
+                    <a href="/vote/selectDish">
                         <i class="la la-dashboard"></i>
-                        <p>Dashboard</p>
+                        <p>菜品投票</p>
                         <span class="badge badge-count">5</span>
                     </a>
                 </li>

@@ -90,4 +90,15 @@
       date = #{date,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByDidAndDate" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from vote
+    where did=#{did} and date=#{date,jdbcType=DATE}
+  </select>
+
+  <select id="selectResult" resultType="com.canteen.pojo.Result">
+    select dname,SUM(count) as count from vote GROUP by did,date
+  </select>
 </mapper>

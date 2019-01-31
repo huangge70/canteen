@@ -21,7 +21,7 @@
                 <h5 class="centered">Admin</h5>
 
                 <li class="mt">
-                    <a class="active" href="/menu/selectAll">
+                    <a href="/menu/selectAll">
                         <i class="fa fa-dashboard"></i>
                         <span>菜单管理</span>
                     </a>
@@ -31,6 +31,13 @@
                     <a href="/user/selectAll" >
                         <i class="fa fa-desktop"></i>
                         <span>用户管理</span>
+                    </a>
+                </li>
+
+                <li class="mt">
+                    <a href="/result">
+                        <i class="fa fa-dashboard"></i>
+                        <span>查看投票结果</span>
                     </a>
                 </li>
 

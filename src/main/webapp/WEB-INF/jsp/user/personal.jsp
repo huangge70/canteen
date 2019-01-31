@@ -63,6 +63,7 @@
 								<div class="card-action">
 									<button type="submit" class="btn btn-success">提交</button>
 									<button type="reset" class="btn btn-danger">重置</button>
+									<button type="reset" class="btn btn-warning" data-toggle="modal" data-target="#Recharge">充值</button>
 								</div>
 							</form>
 
@@ -74,28 +75,52 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
 	<!-- Modal -->
-	<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
+	<div class="modal fade" id="Recharge" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
+			<form class="form-horizontal" role="form" method="post" action="/user/recharge">
 			<div class="modal-content">
 				<div class="modal-header bg-primary">
-					<h6 class="modal-title"><i class="la la-frown-o"></i> Under Development</h6>
+					<h6 class="modal-title"></i> 充值中心</h6>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body text-center">									
-					<p>Currently the pro version of the <b>Ready Dashboard</b> Bootstrap is in progress development</p>
-					<p>
-					<b>We'll let you know when it's done</b></p>
+				<div class="modal-body ">
+					<div class="form-group">
+
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="firstname" name="balance"
+								   placeholder="请输入充值金额">
+						</div>
+					</div>
+					<div class="form-group">
+
+						<div class="col-sm-10">
+							<select class="form-control" name="role">
+								<option>支付宝</option>
+								<option>微信</option>
+							</select>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-success" >充值</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="reset" class="btn btn-warning">重置</button>
 				</div>
 			</div>
+			</form>
 		</div>
 	</div>
 </body>
+
 <script src="/static/user_assets/js/core/jquery.3.2.1.min.js"></script>
 <script src="/static/user_assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="/static/user_assets/js/core/popper.min.js"></script>

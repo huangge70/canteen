@@ -20,4 +20,6 @@ public interface DishMapper {
     int updateByPrimaryKey(Dish record);
 
     List<Dish> selectAll();
+
+    List<Dish> selectActive();
 }

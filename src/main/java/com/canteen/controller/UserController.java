@@ -155,6 +155,29 @@ public class UserController {
         }
     }
 
+    @RequestMapping("/recharge")
+    public String recharge(Model model,HttpServletRequest request){
+        try {
+            double balance=Double.parseDouble(request.getParameter("balance"));
+            User user= (User) request.getSession().getAttribute("user");
+            double oldBalance=user.getBalance();
+            user.setBalance(user.getBalance()+balance);
+            int result=userService.updateUser(user);
+            if(result==1){//充值成功
+                model.addAttribute("message","充值成功！");
+                return "user/personal";
+            }else{//充值失败
+                user.setBalance(oldBalance);
+                model.addAttribute("message","充值失败！");
+                return "user/personal";
+            }
+        }catch (Exception e){//当类型转换出现异常的情况，也就是用户充值时输入的金额类型不正确
+            model.addAttribute("message","请正确输入金额！");
+            return "user/personal";
+        }
+
+    }
+
     public static void main(String[] args){
         System.out.println(StringUtils.isEmpty(""));
     }
