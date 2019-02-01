@@ -39,28 +39,8 @@
 
       <script type="text/javascript">
           KindEditor.ready(function(K) {
-              var editor = K.editor({
-                  allowFileManager : true,
+              var editor = K.create('textarea[name="content"]', {
                   uploadJson:'upload'
-              });
-              editor = K.create('textarea[name="content"]', {
-                  uploadJson:'upload'
-              });
-
-              K('#J_selectImage').click(function() {
-                  editor.loadPlugin('multiimage', function() {
-                      editor.plugin.multiImageDialog({
-                          clickFn : function(urlList) {
-                              var div = K('#J_imageView');
-                              div.html('');
-                              K.each(urlList, function(i, data) {
-                                  div.append('<img src="' + data.url + '" width="50" height="50" />');
-                                  div.append('<input type="hidden" name="imgs" value="'+data.url+'"/>');
-                              });
-                              editor.hideDialog();
-                          }
-                      });
-                  });
               });
           });
       </script>

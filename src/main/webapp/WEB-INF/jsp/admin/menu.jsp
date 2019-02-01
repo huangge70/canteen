@@ -43,8 +43,15 @@
 
                 <li class="sub-menu">
                     <a href="/article/selectAll">
-                        <i class="fa fa-dashboard"></i>
+                        <i class="fa fa-cogs"></i>
                         <span>文章管理</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="/suggest/selectAll">
+                        <i class="fa fa-book"></i>
+                        <span>查看反馈意见</span>
                     </a>
                 </li>
 
@@ -53,11 +60,6 @@
                         <i class="fa fa-cogs"></i>
                         <span>Components</span>
                     </a>
-                    <ul class="sub">
-                        <li><a  href="calendar.html">Calendar</a></li>
-                        <li><a  href="gallery.html">Gallery</a></li>
-                        <li><a  href="todo_list.html">Todo List</a></li>
-                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" >
