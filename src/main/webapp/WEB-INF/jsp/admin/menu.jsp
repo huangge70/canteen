@@ -34,10 +34,17 @@
                     </a>
                 </li>
 
-                <li class="mt">
+                <li class="sub-menu">
                     <a href="/result">
                         <i class="fa fa-dashboard"></i>
                         <span>查看投票结果</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="/article/selectAll">
+                        <i class="fa fa-dashboard"></i>
+                        <span>文章管理</span>
                     </a>
                 </li>
 

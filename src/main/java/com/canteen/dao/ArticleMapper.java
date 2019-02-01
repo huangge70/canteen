@@ -3,6 +3,8 @@ package com.canteen.dao;
 import com.canteen.pojo.Article;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ArticleMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +18,6 @@ public interface ArticleMapper {
     int updateByPrimaryKeySelective(Article record);
 
     int updateByPrimaryKey(Article record);
+
+    List<Article> selectAll();
 }
