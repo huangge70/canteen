@@ -33,7 +33,7 @@
                 </div>
             </div>
             <ul class="nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="/vote/selectDish">
                         <i class="la la-dashboard"></i>
                         <p>菜品投票</p>
@@ -41,9 +41,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="components.html">
+                    <a href="/article/selectAll_user">
                         <i class="la la-table"></i>
-                        <p>Components</p>
+                        <p>查看推送文章</p>
                         <span class="badge badge-count">14</span>
                     </a>
                 </li>
@@ -90,5 +90,17 @@
             </ul>
         </div>
     </div>
+    <script type="text/javascript">
+        $(function() {
+            $("a").click(function() {
+                // 第一种方法
+                // $("li").removeClass("active");//删除指定的 class 属性
+                // $(this).addClass("active");//向被选元素添加一个或多个类
+                // $(this).toggleClass("active");//该函数会对被选元素进行添加/删除类的切换操作
+                //或者使用第二种方法
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+        })
+    </script>
     </body>
 </html>

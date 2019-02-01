@@ -107,5 +107,6 @@
     select
     <include refid="Base_Column_List"/>
     from article
+    where status=1
   </select>
 </mapper>

@@ -25,11 +25,19 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int delete(Integer id) {
-        return articleMapper.deleteByPrimaryKey(id);
+        Article article=new Article();
+        article.setId(id);
+        article.setStatus(0);
+        return articleMapper.updateByPrimaryKeySelective(article);
     }
 
     @Override
     public int insert(Article article) {
         return articleMapper.insert(article);
+    }
+
+    @Override
+    public Article selectById(Integer id) {
+        return articleMapper.selectByPrimaryKey(id);
     }
 }

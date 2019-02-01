@@ -9,4 +9,6 @@ public interface ArticleService {
     int delete(Integer id);
 
     int insert(Article article);
+
+    Article selectById(Integer id);
 }

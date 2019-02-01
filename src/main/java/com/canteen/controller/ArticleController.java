@@ -33,6 +33,13 @@ public class ArticleController {
         return "admin/articlemanagement";
     }
 
+    @RequestMapping("/selectAll_user")
+    public String selectAll_user(Model model, @RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
+        PageInfo<Article> page=articleService.selectAll(pageNo,pageSize);
+        model.addAttribute("pageInfo",page);
+        return "user/articlelist";
+    }
+
     @RequestMapping("/delete")
     public String delete(Model model,Integer id){
         int result=articleService.delete(id);
@@ -48,6 +55,13 @@ public class ArticleController {
     @RequestMapping("/addpage")
     public String addpage(){
         return "admin/addarticle";
+    }
+
+    @RequestMapping("/selectById")
+    public String selectById(Integer id,Model model){
+        Article article=articleService.selectById(id);
+        model.addAttribute("article",article);
+        return "user/articledetail";
     }
 
     @RequestMapping("/add")

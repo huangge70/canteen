@@ -26,7 +26,7 @@
 		<jsp:include page="top.jsp" flush="true"/>
 		<jsp:include page="menu.jsp" flush="true"/>
 			<div class="main-panel" align="center" >
-				<div class="content" >
+				<div class="content">
 					<div class="col-md-6">
 						<div class="card">
 							<div class="card-header">
