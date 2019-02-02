@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @RequestMapping("/menu")
 @Controller
@@ -90,5 +91,12 @@ public class MenuController {
             model.addAttribute("message","修改失败！");
             return "admin/menumanagement";
         }
+   }
+
+   @RequestMapping("/showmenu")
+   public String showmenu(Model model){
+       List<Dish> list=menuService.selectActive();
+       model.addAttribute("dishes",list);
+       return "user/showmenu";
    }
 }

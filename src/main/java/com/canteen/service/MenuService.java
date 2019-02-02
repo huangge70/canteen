@@ -15,4 +15,6 @@ public interface MenuService {
     Dish selectById(Integer id);
 
     int update(Dish dish);
+
+    List<Dish> selectActive();
 }

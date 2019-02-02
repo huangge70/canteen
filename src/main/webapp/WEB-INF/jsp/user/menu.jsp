@@ -55,16 +55,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="tables.html">
+                    <a href="/menu/showmenu">
                         <i class="la la-th"></i>
-                        <p>Tables</p>
+                        <p>点餐</p>
                         <span class="badge badge-count">6</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="notifications.html">
+                    <a href="/order/cart">
                         <i class="la la-bell"></i>
-                        <p>Notifications</p>
+                        <p>我的购物车</p>
                         <span class="badge badge-success">3</span>
                     </a>
                 </li>

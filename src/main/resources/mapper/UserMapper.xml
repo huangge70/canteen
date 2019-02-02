@@ -131,7 +131,7 @@
         avatar = #{avatar,jdbcType=VARCHAR},
       </if>
       <if test="balance != null" >
-        avatar = #{balance,jdbcType=DOUBLE},
+        balance = #{balance,jdbcType=DOUBLE},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

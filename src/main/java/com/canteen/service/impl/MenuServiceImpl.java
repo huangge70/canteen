@@ -42,4 +42,9 @@ public class MenuServiceImpl implements MenuService {
     public int update(Dish dish) {
         return dishMapper.updateByPrimaryKeySelective(dish);
     }
+
+    @Override
+    public List<Dish> selectActive() {
+        return dishMapper.selectActive();
+    }
 }
