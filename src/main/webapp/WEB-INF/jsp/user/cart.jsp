@@ -45,7 +45,9 @@
 								</div>
 							</div>
 							</c:forEach>
+							&nbsp;&nbsp;&nbsp;&nbsp;
 							<button class="btn btn-primary" data-toggle="modal" data-target="#booking">预定结算</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;
 							<button class="btn btn-success" data-toggle="modal" data-target="#takeaway">外卖结算</button>
 						</div>
 					</div>
@@ -77,23 +79,25 @@
 		</div>
 	</div>
 	<!-- 外卖 -->
-	<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
+	<div class="modal fade" id="takeaway" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header bg-primary">
-					<h6 class="modal-title"><i class="la la-frown-o"></i> Under Development</h6>
+					<h6 class="modal-title"><i class="la la-frown-o"></i> 完善订单信息</h6>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
+				<form action="/order/takeaway" method="post">
 				<div class="modal-body text-center">
-					<p>Currently the pro version of the <b>Ready Dashboard</b> Bootstrap is in progress development</p>
-					<p>
-						<b>We'll let you know when it's done</b></p>
+					请输入地址：<input type="text" name="address" placeholder="可以为空，默认为注册填写的地址"><br>
+					请输入酬劳：<input type="text" name="reward">
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-success">提交</button>
+					<button type="reset" class="btn btn-warning">重置</button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

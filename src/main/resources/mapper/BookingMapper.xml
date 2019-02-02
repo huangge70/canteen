@@ -23,7 +23,7 @@
     delete from booking
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.canteen.pojo.Booking" >
+  <insert id="insert" parameterType="com.canteen.pojo.Booking" useGeneratedKeys="true" keyProperty="id">
     insert into booking (id, uid, createtime, 
       price, status, uname, 
       time)
