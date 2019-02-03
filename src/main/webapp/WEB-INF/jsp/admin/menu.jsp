@@ -56,9 +56,9 @@
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;" >
-                        <i class="fa fa-cogs"></i>
-                        <span>Components</span>
+                    <a href="/order/showbooking" >
+                        <i class="fa fa-tasks"></i>
+                        <span>查看预定</span>
                     </a>
                 </li>
                 <li class="sub-menu">

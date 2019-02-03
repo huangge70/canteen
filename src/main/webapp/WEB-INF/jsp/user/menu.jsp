@@ -69,9 +69,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="typography.html">
+                    <a href="/order/showmybooking">
                         <i class="la la-font"></i>
-                        <p>Typography</p>
+                        <p>我的预定</p>
                         <span class="badge badge-danger">25</span>
                     </a>
                 </li>

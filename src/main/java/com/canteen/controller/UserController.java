@@ -63,7 +63,7 @@ public class UserController {
             return "index";
         }
         User selUser=userService.selectByParam(user);
-        System.out.print(selUser.toString());
+        System.out.println(selUser.toString());
        if(selUser==null){//没有在数据库中查询到用户
            model.addAttribute("message","用户名或密码错误，请稍后重试！");
            return "index";

@@ -114,4 +114,14 @@
       type = #{type,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectBookingDetails" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from detail
+    where oid=#{oid} and type=0
+  </select>
+  <delete id="deleteBookingDetails" parameterType="map">
+    delete from detail
+    where oid=#{oid} and type=0
+  </delete>
 </mapper>

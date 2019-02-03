@@ -47,12 +47,12 @@
       <if test="orderer != null" >
         orderer,
       </if>
-      <if test="createtime != null" >
-        createtime,
-      </if>
-      <if test="price != null" >
-        price,
-      </if>
+
+
+        <if test="price != null" >
+            price,
+        </if>
+
       <if test="status != null" >
         status,
       </if>
@@ -82,12 +82,11 @@
       <if test="orderer != null" >
         #{orderer,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="price != null" >
-        #{price,jdbcType=DOUBLE},
-      </if>
+
+
+        <if test="price != null" >
+            #{price,jdbcType=DOUBLE},
+        </if>
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
       </if>

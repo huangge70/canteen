@@ -1,17 +1,23 @@
 package com.canteen.controller;
 
+import com.canteen.dto.BookingDto;
 import com.canteen.pojo.Booking;
 import com.canteen.pojo.Detail;
+import com.canteen.pojo.Order;
 import com.canteen.pojo.User;
 import com.canteen.service.BookingService;
 import com.canteen.service.DetailService;
+import com.canteen.service.OrderService;
 import com.canteen.service.UserService;
+import com.github.pagehelper.PageInfo;
 import org.bouncycastle.math.raw.Mod;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -29,6 +35,8 @@ public class OrderController {
     private DetailService detailService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping("/addcart")
     public String addcart(HttpServletRequest request, Detail detail, Model model){
@@ -81,6 +89,11 @@ public class OrderController {
         Date date=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Detail> list= (List<Detail>) request.getSession().getAttribute("cart");
+        if(list==null||list.size()==0){//购物车没有商品
+            model.addAttribute("message","您的购物车里没有商品需要结算！");
+            model.addAttribute("details",list);
+            return "user/cart";
+        }
         double totleprice=0;
         for(Detail detail:list){
             totleprice=totleprice+detail.getPrice()*detail.getCount();
@@ -114,5 +127,114 @@ public class OrderController {
         request.getSession().removeAttribute("cart");//删除缓存中购物车信息
         model.addAttribute("message","结算成功！");
         return "user/cart";
+    }
+
+    @RequestMapping("/takeaway")
+    public String takeaway(Model model, HttpServletRequest request, String address,double reward) throws ParseException {
+        System.out.println(address);
+        Order order=new Order();
+        User user= (User) request.getSession().getAttribute("user");
+        order.setOrderer(user.getId());
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        order.setCreatetime(sdf.parse(sdf.format(date)));
+        order.setUpdatetime(sdf.parse(sdf.format(date)));
+        double totleprice=0;
+        List<Detail> list= (List<Detail>) request.getSession().getAttribute("cart");
+        if(list==null||list.size()==0){//购物车没有商品
+            model.addAttribute("message","您的购物车里没有商品需要结算！");
+            model.addAttribute("details",list);
+            return "user/cart";
+        }
+        for(Detail detail:list){
+            totleprice=totleprice+detail.getCount()*detail.getPrice();
+        }
+        if(totleprice>user.getBalance()){//用户余额不足
+            model.addAttribute("message","您的余额不足，请尽快充值！");
+            model.addAttribute("details",list);
+            return "user/cart";
+        }
+        order.setPrice(totleprice);
+        order.setStatus("待处理");
+        if(address==null||address.trim().equals("")){//用户没有填写地址，使用默认地址
+            order.setAddress(user.getAddress());
+        }else{
+            order.setAddress(address);
+        }
+        order.setReward(reward);
+        order.setOphone(user.getPhone());
+        System.out.println(order);
+        int result=orderService.insert(order);
+        if(result==0){//新增订单失败
+            model.addAttribute("message","结算失败！");
+            model.addAttribute("details",list);
+            return "user/cart";
+        }
+
+        for(Detail detail:list){
+            detail.setOid(order.getId());
+            detail.setType(1);//0表示是预定订单的详情
+            detailService.insert(detail);
+        }
+        user.setBalance(user.getBalance()-totleprice);//修改用户的余额
+        userService.updateUser(user);
+        request.getSession().removeAttribute("cart");//删除缓存中购物车信息
+        model.addAttribute("message","结算成功！");
+        return "user/cart";
+    }
+
+    @RequestMapping("/showbooking")
+    public String showbooking(Model model,@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
+        PageInfo<Booking> pageInfo=bookingService.selectAll(pageNo,pageSize);
+        List<Booking> list=pageInfo.getList();
+        List<BookingDto> resultlist=new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            Booking booking=list.get(i);
+            BookingDto bookingDto=new BookingDto();
+            //复制对象的属性到另外一个对象中
+            BeanUtils.copyProperties(booking,bookingDto);
+            List<Detail> details=detailService.selectBookingDetails(booking.getId());
+            bookingDto.setDetails(details);
+            resultlist.add(bookingDto);
+        }
+        model.addAttribute("pageInfo",pageInfo);
+        model.addAttribute("bookings",resultlist);
+        return "admin/showbooking";
+    }
+
+    @RequestMapping("/finishbooking")
+    public String finishbooking(Model model,Integer id){
+        int result=bookingService.updateBookingStatus(id);
+        if(result==1){//修改成功
+            model.addAttribute("message","修改成功!");
+            return "forward:/order/showbooking";
+        }else{
+            model.addAttribute("message","修改失败!");
+            return "forward:/order/showbooking";
+        }
+    }
+
+    @RequestMapping("/showmybooking")
+    public String showmybooking(HttpServletRequest request,Model model,@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
+        User user= (User) request.getSession().getAttribute("user");
+        int uid=user.getId();
+        PageInfo<Booking> pageInfo=bookingService.selectMyBooking(uid,pageNo,pageSize);
+        model.addAttribute("pageInfo",pageInfo);
+        return "user/showmybooking";
+    }
+
+    @RequestMapping("/deletebooking")
+    @Transactional
+    public String deletebooking(Model model,Integer id){
+        try {
+            bookingService.delete(id);
+            detailService.deleteBookingDetails(id);
+            model.addAttribute("message","取消成功！");
+            return "forward:/order/showmybooking";
+        }catch (Exception e){
+            model.addAttribute("message","取消失败！");
+            return "forward:/order/showmybooking";
+        }
+
     }
 }

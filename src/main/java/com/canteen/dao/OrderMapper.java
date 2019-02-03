@@ -1,9 +1,7 @@
 package com.canteen.dao;
 
 import com.canteen.pojo.Order;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
 

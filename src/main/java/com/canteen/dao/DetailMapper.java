@@ -3,6 +3,8 @@ package com.canteen.dao;
 import com.canteen.pojo.Detail;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface DetailMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +18,8 @@ public interface DetailMapper {
     int updateByPrimaryKeySelective(Detail record);
 
     int updateByPrimaryKey(Detail record);
+
+    List<Detail> selectBookingDetails(Integer oid);
+
+    int deleteBookingDetails(Integer oid);
 }

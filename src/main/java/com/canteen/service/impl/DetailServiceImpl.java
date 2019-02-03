@@ -6,6 +6,8 @@ import com.canteen.service.DetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DetailServiceImpl implements DetailService {
     @Autowired
@@ -13,5 +15,15 @@ public class DetailServiceImpl implements DetailService {
     @Override
     public int insert(Detail detail) {
         return detailMapper.insert(detail);
+    }
+
+    @Override
+    public List<Detail> selectBookingDetails(Integer oid) {
+        return detailMapper.selectBookingDetails(oid);
+    }
+
+    @Override
+    public int deleteBookingDetails(Integer oid) {
+        return detailMapper.deleteBookingDetails(oid);
     }
 }
