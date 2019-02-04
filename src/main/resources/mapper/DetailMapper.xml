@@ -118,7 +118,7 @@
     select
     <include refid="Base_Column_List"/>
     from detail
-    where oid=#{oid} and type=0
+    where oid=#{oid}
   </select>
   <delete id="deleteBookingDetails" parameterType="map">
     delete from detail

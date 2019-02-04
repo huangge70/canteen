@@ -62,15 +62,10 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="/order/showtakeaway" >
                         <i class="fa fa-book"></i>
-                        <span>Extra Pages</span>
+                        <span>查看外卖订单</span>
                     </a>
-                    <ul class="sub">
-                        <li><a  href="blank.html">Blank Page</a></li>
-                        <li><a  href="login.html">Login</a></li>
-                        <li><a  href="lock_screen.html">Lock Screen</a></li>
-                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" >

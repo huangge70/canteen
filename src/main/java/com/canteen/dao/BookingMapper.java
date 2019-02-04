@@ -24,4 +24,6 @@ public interface BookingMapper {
     int updateBookingStatus(Integer id);
 
     List<Booking> selectMyBooking(Integer uid);
+
+    List<Booking> selectTakeaway();
 }

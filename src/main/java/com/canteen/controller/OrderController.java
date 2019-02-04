@@ -256,6 +256,25 @@ public class OrderController {
         return "admin/showbooking";
     }
 
+    @RequestMapping("/showtakeaway")
+    public String showtakeaway(Model model,@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
+        PageInfo<Booking> pageInfo=bookingService.selectTakeaway(pageNo,pageSize);
+        List<Booking> list=pageInfo.getList();
+        List<BookingDto> resultlist=new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            Booking booking=list.get(i);
+            BookingDto bookingDto=new BookingDto();
+            //复制对象的属性到另外一个对象中
+            BeanUtils.copyProperties(booking,bookingDto);
+            List<Detail> details=detailService.selectBookingDetails(booking.getId());
+            bookingDto.setDetails(details);
+            resultlist.add(bookingDto);
+        }
+        model.addAttribute("pageInfo",pageInfo);
+        model.addAttribute("bookings",resultlist);
+        return "admin/showtakeaway";
+    }
+
     @RequestMapping("/finishbooking")
     public String finishbooking(Model model,Integer id){
         int result=bookingService.updateBookingStatus(id);
@@ -265,6 +284,18 @@ public class OrderController {
         }else{
             model.addAttribute("message","修改失败!");
             return "forward:/order/showbooking";
+        }
+    }
+
+    @RequestMapping("/finishtakeaway")
+    public String finishtakeaway(Model model,Integer id){
+        int result=takeawayService.updateTakeawayStatus(id);
+        if(result==1){//修改成功
+            model.addAttribute("message","修改成功!");
+            return "forward:/order/showtakeaway";
+        }else{
+            model.addAttribute("message","修改失败!");
+            return "forward:/order/showtakeaway";
         }
     }
 

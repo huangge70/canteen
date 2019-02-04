@@ -121,6 +121,14 @@
     from booking
     where status='待处理'
   </select>
+
+  <select id="selectTakeaway" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from booking
+    where status='外卖'
+  </select>
+
   <update id="updateBookingStatus" parameterType="map" >
     update booking
     set status='已完成'

@@ -14,4 +14,6 @@ public interface TakeawayMapper {
     int updateByPrimaryKeySelective(Takeaway record);
 
     int updateByPrimaryKey(Takeaway record);
+
+    int updateTakeawayStatus(Integer id);
 }

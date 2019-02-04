@@ -114,4 +114,10 @@
       status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="updateTakeawayStatus" parameterType="map">
+    update takeaway
+    set status='已完成'
+    where id=#{id}
+  </update>
 </mapper>

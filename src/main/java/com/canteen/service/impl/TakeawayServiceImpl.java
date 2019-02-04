@@ -15,4 +15,9 @@ public class TakeawayServiceImpl implements TakeawayService {
     public int insert(Takeaway takeaway) {
         return takeawayMapper.insertSelective(takeaway);
     }
+
+    @Override
+    public int updateTakeawayStatus(Integer id) {
+        return takeawayMapper.updateTakeawayStatus(id);
+    }
 }

@@ -46,4 +46,13 @@ public class BookingServiceImpl implements BookingService {
         return bookingMapper.deleteByPrimaryKey(id);
     }
 
+    @Override
+    public PageInfo<Booking> selectTakeaway(int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        List<Booking> list=bookingMapper.selectTakeaway();
+        PageInfo<Booking> pageInfo=new PageInfo<>(list);
+        return pageInfo;
+    }
+
+
 }
