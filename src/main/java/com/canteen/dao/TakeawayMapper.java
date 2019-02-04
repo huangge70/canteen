@@ -2,6 +2,8 @@ package com.canteen.dao;
 
 import com.canteen.pojo.Takeaway;
 
+import java.util.List;
+
 public interface TakeawayMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,4 +18,6 @@ public interface TakeawayMapper {
     int updateByPrimaryKey(Takeaway record);
 
     int updateTakeawayStatus(Integer id);
+
+    List<Takeaway> selectByParam(String address);
 }

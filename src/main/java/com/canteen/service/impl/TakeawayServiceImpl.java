@@ -3,8 +3,12 @@ package com.canteen.service.impl;
 import com.canteen.dao.TakeawayMapper;
 import com.canteen.pojo.Takeaway;
 import com.canteen.service.TakeawayService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TakeawayServiceImpl implements TakeawayService {
@@ -19,5 +23,23 @@ public class TakeawayServiceImpl implements TakeawayService {
     @Override
     public int updateTakeawayStatus(Integer id) {
         return takeawayMapper.updateTakeawayStatus(id);
+    }
+
+    @Override
+    public Takeaway selectById(Integer id) {
+        return takeawayMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public PageInfo<Takeaway> selectByParam(String address,int pageNo,int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        List<Takeaway> list= takeawayMapper.selectByParam(address);
+        PageInfo<Takeaway> pageInfo=new PageInfo<>(list);
+        return pageInfo;
+    }
+
+    @Override
+    public int update(Takeaway takeaway) {
+        return takeawayMapper.updateByPrimaryKeySelective(takeaway);
     }
 }

@@ -244,6 +244,7 @@ public class OrderController {
         List<BookingDto> resultlist=new ArrayList<>();
         for(int i=0;i<list.size();i++){
             Booking booking=list.get(i);
+
             BookingDto bookingDto=new BookingDto();
             //复制对象的属性到另外一个对象中
             BeanUtils.copyProperties(booking,bookingDto);
@@ -263,6 +264,10 @@ public class OrderController {
         List<BookingDto> resultlist=new ArrayList<>();
         for(int i=0;i<list.size();i++){
             Booking booking=list.get(i);
+            Takeaway takeaway=takeawayService.selectById(booking.getId());
+            if(takeaway.getStatus().equals("已完成")){
+                continue;
+            }
             BookingDto bookingDto=new BookingDto();
             //复制对象的属性到另外一个对象中
             BeanUtils.copyProperties(booking,bookingDto);
@@ -321,5 +326,31 @@ public class OrderController {
             return "forward:/order/showmybooking";
         }
 
+    }
+
+    @RequestMapping("/showorder")
+    public String showorder(Model model,HttpServletRequest request,@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
+        User user= (User) request.getSession().getAttribute("user");
+        String address=user.getAddress().split(",")[0]+"%";
+        PageInfo<Takeaway> pageInfo=takeawayService.selectByParam(address,pageNo,pageSize);
+        model.addAttribute("pageInfo",pageInfo);
+        return "user/showorder";
+    }
+
+    @RequestMapping("/receiveorder")
+    public String receiveorder(Integer id,Model model,HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        Takeaway takeaway=takeawayService.selectById(id);
+        takeaway.setDelivery(user.getId());
+        takeaway.setDphone(user.getPhone());
+        takeaway.setStatus("已接单");
+        int result=takeawayService.update(takeaway);
+        if(result==1){//修改成功
+            model.addAttribute("message","接单成功！");
+            return "forward:/order/showorder";
+        }else{
+            model.addAttribute("message","接单失败！");
+            return "forward:/order/showorder";
+        }
     }
 }

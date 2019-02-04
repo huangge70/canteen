@@ -120,4 +120,12 @@
     set status='已完成'
     where id=#{id}
   </update>
+
+  <select id="selectByParam" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from takeaway
+    where address like #{address}
+    and status='已完成'
+  </select>
 </mapper>
