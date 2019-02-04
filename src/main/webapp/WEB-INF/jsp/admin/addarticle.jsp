@@ -14,7 +14,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - Bootstrap Admin Template</title>
+    <title>校园食堂一体化服务系统-管理员</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/admin_assets/css/bootstrap.css" rel="stylesheet">

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.canteen.dao.TakeawayMapper" >
+  <resultMap id="BaseResultMap" type="com.canteen.pojo.Takeaway" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="delivery" property="delivery" jdbcType="INTEGER" />
+    <result column="reward" property="reward" jdbcType="DOUBLE" />
+    <result column="ophone" property="ophone" jdbcType="VARCHAR" />
+    <result column="dphone" property="dphone" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, address, delivery, reward, ophone, dphone, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from takeaway
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from takeaway
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.canteen.pojo.Takeaway" >
+    insert into takeaway (id, address, delivery, 
+      reward, ophone, dphone, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{delivery,jdbcType=INTEGER}, 
+      #{reward,jdbcType=DOUBLE}, #{ophone,jdbcType=VARCHAR}, #{dphone,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.canteen.pojo.Takeaway" >
+    insert into takeaway
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="delivery != null" >
+        delivery,
+      </if>
+      <if test="reward != null" >
+        reward,
+      </if>
+      <if test="ophone != null" >
+        ophone,
+      </if>
+      <if test="dphone != null" >
+        dphone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery != null" >
+        #{delivery,jdbcType=INTEGER},
+      </if>
+      <if test="reward != null" >
+        #{reward,jdbcType=DOUBLE},
+      </if>
+      <if test="ophone != null" >
+        #{ophone,jdbcType=VARCHAR},
+      </if>
+      <if test="dphone != null" >
+        #{dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.canteen.pojo.Takeaway" >
+    update takeaway
+    <set >
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery != null" >
+        delivery = #{delivery,jdbcType=INTEGER},
+      </if>
+      <if test="reward != null" >
+        reward = #{reward,jdbcType=DOUBLE},
+      </if>
+      <if test="ophone != null" >
+        ophone = #{ophone,jdbcType=VARCHAR},
+      </if>
+      <if test="dphone != null" >
+        dphone = #{dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.canteen.pojo.Takeaway" >
+    update takeaway
+    set address = #{address,jdbcType=VARCHAR},
+      delivery = #{delivery,jdbcType=INTEGER},
+      reward = #{reward,jdbcType=DOUBLE},
+      ophone = #{ophone,jdbcType=VARCHAR},
+      dphone = #{dphone,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

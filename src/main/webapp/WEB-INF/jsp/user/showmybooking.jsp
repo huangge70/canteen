@@ -43,6 +43,9 @@
 									<c:if test="${booking.status=='待处理'}">
 										<a class="btn btn-danger" href="/order/deletebooking?id=${booking.id}">取消订单</a>
 									</c:if>
+									<c:if test="${booking.status=='已完成'}">
+										<span><font color="red"> 已完成</font></span>
+									</c:if>
 								</td>
 							</tr>
 							</tbody>

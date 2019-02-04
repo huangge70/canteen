@@ -131,6 +131,7 @@
     <include refid="Base_Column_List"/>
     from booking
     where uid=#{id}
+    and id not in (select id from booking where status='外卖')
     order by createtime
   </select>
 </mapper>
