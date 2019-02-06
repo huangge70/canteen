@@ -81,6 +81,18 @@
                         <p>接单</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/order/recievedorder">
+                        <i class="la la-chrome"></i>
+                        <p>已接订单</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/order/myorder">
+                        <i class="la la-send"></i>
+                        <p>我的订单</p>
+                    </a>
+                </li>
                 <li class="nav-item update-pro">
                     <button  data-toggle="modal" data-target="#modalUpdate">
                         <i class="la la-hand-pointer-o"></i>

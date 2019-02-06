@@ -17,4 +17,8 @@ public interface BookingService {
     int delete(Integer id);
 
     PageInfo<Booking> selectTakeaway(int pageNo,int pageSize);
+
+    List<Booking> selectMyOrder(int uid);
+
+    Booking selectByPrimarykey(int id);
 }

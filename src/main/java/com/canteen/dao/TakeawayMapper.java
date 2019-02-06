@@ -20,4 +20,6 @@ public interface TakeawayMapper {
     int updateTakeawayStatus(Integer id);
 
     List<Takeaway> selectByParam(String address);
+
+    List<Takeaway> selectByDelivery(int uid);
 }

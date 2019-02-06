@@ -353,4 +353,89 @@ public class OrderController {
             return "forward:/order/showorder";
         }
     }
+
+    @RequestMapping("/recievedorder")
+    public String recievedorder(Model model,HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        List<Takeaway> list=takeawayService.selectByDelivery(user.getId());
+        if(list==null||list.size()==0){
+            model.addAttribute("message","您还没有接单！");
+        }
+        model.addAttribute("takeaways",list);
+        return "user/recievedorder";
+    }
+
+    @RequestMapping("/myorder")
+    public String myorder(Model model,HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        List<Booking> list=bookingService.selectMyOrder(user.getId());
+        List<Order> orderList=new ArrayList<>();
+        for(Booking booking:list){
+            Takeaway takeaway=takeawayService.selectById(booking.getId());
+            System.out.println(booking);
+            System.out.println(takeaway);
+            Order order=new Order();
+            order.setId(booking.getId());
+            order.setOrderer(booking.getUid());
+            order.setCreatetime(booking.getCreatetime());
+            order.setPrice(booking.getPrice());
+            order.setStatus(takeaway.getStatus());
+            order.setAddress(takeaway.getAddress());
+            order.setDelivery(takeaway.getDelivery());
+            order.setReward(takeaway.getReward());
+            order.setOphone(takeaway.getOphone());
+            order.setDphone(takeaway.getDphone());
+            orderList.add(order);
+            System.out.println(order);
+        }
+        model.addAttribute("orders",orderList);
+        return "user/myorder";
+    }
+    @RequestMapping("/cancelorder")
+    public String cancelorder(Integer id,Model model,HttpServletRequest request){
+        Booking booking=bookingService.selectByPrimarykey(id);
+        Takeaway takeaway=takeawayService.selectById(id);
+        double totle=booking.getPrice()+takeaway.getReward();
+        User user= (User) request.getSession().getAttribute("user");
+        int result=bookingService.delete(id);
+        if(result!=1){
+            model.addAttribute("message","取消失败，请稍后重试！");
+            return "forward:/order/myorder";
+        }
+        result=takeawayService.delete(id);
+        if(result!=1){
+            model.addAttribute("message","取消失败，请稍后重试！");
+            return "forward:/order/myorder";
+        }
+        //将订单金额退回
+        user.setBalance(user.getBalance()+totle);
+        result=userService.updateUser(user);
+        if(result!=1){
+            model.addAttribute("message","取消失败，请稍后重试！");
+            return "forward:/order/myorder";
+        }
+        model.addAttribute("message","取消成功！");
+        return "forward:/order/myorder";
+    }
+
+    @RequestMapping("/confirmorder")
+    public String confirmorder(Integer id,Model model){
+        Takeaway takeaway=takeawayService.selectById(id);
+        takeaway.setStatus("已确认");
+        int result=takeawayService.update(takeaway);
+        if(result!=1){
+            model.addAttribute("message","确认订单失败！");
+            return "forward:/order/myorder";
+        }
+        User user=userService.selectById(takeaway.getDelivery());
+        //将酬劳转给送餐人
+        user.setBalance(user.getBalance()+takeaway.getReward());
+        result=userService.updateUser(user);
+        if(result!=1){
+            model.addAttribute("message","确认订单失败！");
+            return "forward:/order/myorder";
+        }
+        model.addAttribute("message","确认订单成功！");
+        return "forward:/order/myorder";
+    }
 }

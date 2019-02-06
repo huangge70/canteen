@@ -26,4 +26,6 @@ public interface BookingMapper {
     List<Booking> selectMyBooking(Integer uid);
 
     List<Booking> selectTakeaway();
+
+    List<Booking> selectMyOrder(int uid);
 }

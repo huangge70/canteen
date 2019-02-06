@@ -128,4 +128,11 @@
     where address like #{address}
     and status='已完成'
   </select>
+  
+  <select id="selectByDelivery" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from takeaway
+    where delivery=#{uid}
+  </select>
 </mapper>

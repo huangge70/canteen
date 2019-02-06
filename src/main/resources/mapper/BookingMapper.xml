@@ -142,4 +142,11 @@
     and id not in (select id from booking where status='外卖')
     order by createtime
   </select>
+  <select id="selectMyOrder" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from booking
+    where uid=#{uid}
+    and status='外卖'
+  </select>
 </mapper>

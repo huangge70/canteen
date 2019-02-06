@@ -54,5 +54,15 @@ public class BookingServiceImpl implements BookingService {
         return pageInfo;
     }
 
+    @Override
+    public List<Booking> selectMyOrder(int uid) {
+        return bookingMapper.selectMyOrder(uid);
+    }
+
+    @Override
+    public Booking selectByPrimarykey(int id) {
+        return bookingMapper.selectByPrimaryKey(id);
+    }
+
 
 }

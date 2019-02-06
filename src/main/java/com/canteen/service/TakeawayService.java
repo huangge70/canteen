@@ -15,4 +15,8 @@ public interface TakeawayService {
     PageInfo<Takeaway> selectByParam(String address, int pageNo, int pageSize);
 
     int update(Takeaway takeaway);
+
+    List<Takeaway> selectByDelivery(int uid);
+
+    int delete(Integer id);
 }

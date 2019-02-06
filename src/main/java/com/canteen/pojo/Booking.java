@@ -74,4 +74,17 @@ public class Booking {
     public void setTime(Date time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", uid=" + uid +
+                ", createtime=" + createtime +
+                ", price=" + price +
+                ", status='" + status + '\'' +
+                ", uname='" + uname + '\'' +
+                ", time=" + time +
+                '}';
+    }
 }

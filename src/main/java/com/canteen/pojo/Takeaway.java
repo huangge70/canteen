@@ -70,4 +70,17 @@ public class Takeaway {
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Takeaway{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", delivery=" + delivery +
+                ", reward=" + reward +
+                ", ophone='" + ophone + '\'' +
+                ", dphone='" + dphone + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

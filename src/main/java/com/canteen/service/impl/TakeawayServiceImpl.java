@@ -42,4 +42,14 @@ public class TakeawayServiceImpl implements TakeawayService {
     public int update(Takeaway takeaway) {
         return takeawayMapper.updateByPrimaryKeySelective(takeaway);
     }
+
+    @Override
+    public List<Takeaway> selectByDelivery(int uid) {
+        return takeawayMapper.selectByDelivery(uid);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return takeawayMapper.deleteByPrimaryKey(id);
+    }
 }

@@ -11,4 +11,6 @@ public interface UserService {
     PageInfo<User> selectAll(int pageNo, int pageSize);
 
     int updateUser(User user);
+
+    User selectById(Integer id);
 }
