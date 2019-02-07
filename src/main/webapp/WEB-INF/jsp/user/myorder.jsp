@@ -16,6 +16,19 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
 	<link rel="stylesheet" href="/static/user_assets/css/ready.css">
 	<link rel="stylesheet" href="/static/user_assets/css/demo.css">
+
+	<!--kindeditor-->
+	<link rel="stylesheet" href="/static/js/kindeditor/themes/default/default.css" />
+	<script src="/static/js/kindeditor/kindeditor-all.js"></script>
+	<script src="/static/js/kindeditor/lang/zh_CN.js"></script>
+
+	<script type="text/javascript">
+        KindEditor.ready(function(K) {
+            var editor = K.create('textarea[name="content"]', {
+                uploadJson:'upload'
+            });
+        });
+	</script>
 </head>
 <body>
 	<c:if test="${message!=null}">
@@ -51,6 +64,10 @@
 											</c:if>
 											<c:if test="${order.status=='已确认'}">
 												<font color="green">已确认</font>
+												<button class="btn-success" data-toggle="modal" data-target="#evaluate" onclick="assignment(${order.id})">评价</button>
+											</c:if>
+											<c:if test="${order.status=='已评价'}">
+												<font color="green">已评价</font>
 											</c:if>
 										</p>
 									</div>
@@ -63,6 +80,30 @@
 				<jsp:include page="footer.jsp" flush="true"/>
 			</div>
 
+		</div>
+	</div>
+
+	<!-- 评价 -->
+	<div class="modal fade" id="evaluate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true" >
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<h6 class="modal-title"><i class="la la-frown-o"></i> 填写评价信息</h6>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="/order/evaluate" method="post">
+					<input type="hidden" id="id" name="oid">
+					<div class="modal-body text-center">
+						请输入评价内容:<textarea name="content" style="width:200px;height:200px;visibility:hidden;"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-success">提交</button>
+						<button type="reset" class="btn btn-warning">重置</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </body>
@@ -93,5 +134,14 @@
 			values: [ 75, 300 ]
 		});
 	} );
+</script>
+<!--向模态框中传值-->
+<script type="text/javascript">
+    function assignment(id){
+        $('#evaluate').modal('show');
+
+        $('#id').attr('value',id);
+
+    }
 </script>
 </html>

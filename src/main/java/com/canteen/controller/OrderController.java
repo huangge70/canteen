@@ -33,6 +33,8 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private TakeawayService takeawayService;
+    @Autowired
+    private EvaluationService evaluationService;
 
     @RequestMapping("/addcart")
     public String addcart(HttpServletRequest request, Detail detail, Model model){
@@ -437,5 +439,30 @@ public class OrderController {
         }
         model.addAttribute("message","确认订单成功！");
         return "forward:/order/myorder";
+    }
+
+    @RequestMapping("/evaluate")
+    public String evaluate(Evaluation evaluation,HttpServletRequest request,Model model) throws ParseException {
+        User user= (User) request.getSession().getAttribute("user");
+        //System.out.println(evaluation.toString());
+        Takeaway takeaway=takeawayService.selectById(evaluation.getOid());
+        takeaway.setStatus("已评价");
+        int result=takeawayService.update(takeaway);
+        if(result!=1){
+            model.addAttribute("message","评价失败！");
+            return "forward:/order/myorder";
+        }
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        evaluation.setTime(sdf.parse(sdf.format(date)));
+        evaluation.setUid(user.getId());
+        result=evaluationService.insert(evaluation);
+        if(result==1){
+            model.addAttribute("message","评价成功！");
+            return "forward:/order/myorder";
+        }else {
+            model.addAttribute("message","评价失败！");
+            return "forward:/order/myorder";
+        }
     }
 }

@@ -52,4 +52,15 @@ public class Evaluation {
     public void setTime(Date time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "Evaluation{" +
+                "id=" + id +
+                ", oid=" + oid +
+                ", uid=" + uid +
+                ", content='" + content + '\'' +
+                ", time=" + time +
+                '}';
+    }
 }
