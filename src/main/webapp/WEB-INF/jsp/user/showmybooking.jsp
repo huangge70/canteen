@@ -44,7 +44,7 @@
 										<a class="btn btn-danger" href="/order/deletebooking?id=${booking.id}">取消订单</a>
 									</c:if>
 									<c:if test="${booking.status=='已完成'}">
-										<span><font color="red"> 已完成</font></span>
+										<button class="btn btn-success" data-toggle="modal" data-target="#evaluate" onclick="assignment(${booking.id})">评价</button>
 									</c:if>
 								</td>
 							</tr>
@@ -79,7 +79,29 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- 评价 -->
+	<div class="modal fade" id="evaluate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true" >
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<h6 class="modal-title"><i class="la la-frown-o"></i> 填写评价信息</h6>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="/order/evaluatebooking" method="post">
+					<input type="hidden" id="id" name="oid">
+					<div class="modal-body text-center">
+						请输入评价内容:<textarea name="content" style="width:200px;height:200px;visibility:hidden;"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-success">提交</button>
+						<button type="reset" class="btn btn-warning">重置</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="/static/user_assets/js/core/jquery.3.2.1.min.js"></script>
 <script src="/static/user_assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
@@ -121,5 +143,14 @@
 			time: 1000,
 		});
 	});
+</script>
+<!--向模态框中传值-->
+<script type="text/javascript">
+    function assignment(id){
+        $('#evaluate').modal('show');
+
+        $('#id').attr('value',id);
+
+    }
 </script>
 </html>

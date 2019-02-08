@@ -64,5 +64,10 @@ public class BookingServiceImpl implements BookingService {
         return bookingMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public int update(Booking booking) {
+        return bookingMapper.updateByPrimaryKey(booking);
+    }
+
 
 }

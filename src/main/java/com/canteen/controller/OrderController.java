@@ -465,4 +465,28 @@ public class OrderController {
             return "forward:/order/myorder";
         }
     }
+
+    @RequestMapping("/evaluatebooking")
+    public String evaluatebooking(HttpServletRequest request,Model model,Evaluation evaluation) throws ParseException {
+        User user= (User) request.getSession().getAttribute("user");
+        Booking booking=bookingService.selectByPrimarykey(evaluation.getOid());
+        booking.setStatus("已评价");
+        int result=bookingService.update(booking);
+        if(result!=1){
+            model.addAttribute("message","评价失败！");
+            return "forward:/order/showmybooking";
+        }
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        evaluation.setUid(user.getId());
+        evaluation.setTime(sdf.parse(sdf.format(date)));
+        result=evaluationService.insert(evaluation);
+        if(result==1){
+            model.addAttribute("message","评价成功！");
+            return "forward:/order/showmybooking";
+        }else {
+            model.addAttribute("message","评价失败！");
+            return "forward:/order/showmybooking";
+        }
+    }
 }

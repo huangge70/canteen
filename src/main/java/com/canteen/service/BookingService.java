@@ -21,4 +21,6 @@ public interface BookingService {
     List<Booking> selectMyOrder(int uid);
 
     Booking selectByPrimarykey(int id);
+
+    int update(Booking booking);
 }
