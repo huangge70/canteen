@@ -16,6 +16,19 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
 	<link rel="stylesheet" href="/static/user_assets/css/ready.css">
 	<link rel="stylesheet" href="/static/user_assets/css/demo.css">
+
+	<!--kindeditor-->
+	<link rel="stylesheet" href="/static/js/kindeditor/themes/default/default.css" />
+	<script src="/static/js/kindeditor/kindeditor-all.js"></script>
+	<script src="/static/js/kindeditor/lang/zh_CN.js"></script>
+
+	<script type="text/javascript">
+        KindEditor.ready(function(K) {
+            var editor = K.create('textarea[name="content"]', {
+                uploadJson:'upload'
+            });
+        });
+	</script>
 </head>
 <body>
 	<div class="wrapper">
@@ -45,6 +58,9 @@
 									</c:if>
 									<c:if test="${booking.status=='已完成'}">
 										<button class="btn btn-success" data-toggle="modal" data-target="#evaluate" onclick="assignment(${booking.id})">评价</button>
+									</c:if>
+									<c:if test="${booking.status=='已评价'}">
+										<span><font color="green">已评价</font> </span>
 									</c:if>
 								</td>
 							</tr>

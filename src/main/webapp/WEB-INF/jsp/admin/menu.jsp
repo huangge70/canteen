@@ -68,13 +68,10 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="/evaluation/showevaluation" >
                         <i class="fa fa-tasks"></i>
-                        <span>Forms</span>
+                        <span>查看评价</span>
                     </a>
-                    <ul class="sub">
-                        <li><a  href="form_component.html">Form Components</a></li>
-                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" >

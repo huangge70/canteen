@@ -3,6 +3,8 @@ package com.canteen.dao;
 import com.canteen.pojo.Evaluation;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface EvaluationMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +18,6 @@ public interface EvaluationMapper {
     int updateByPrimaryKeySelective(Evaluation record);
 
     int updateByPrimaryKey(Evaluation record);
+
+    List<Evaluation> selectAll();
 }
