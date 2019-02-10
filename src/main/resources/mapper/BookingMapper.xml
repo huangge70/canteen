@@ -149,4 +149,7 @@
     where uid=#{uid}
     and status='外卖'
   </select>
+  <select id="salestatistics" resultType="com.canteen.pojo.Salestatistics">
+    select month(createtime) as month,sum(price) as sum from booking GROUP BY month
+  </select>
 </mapper>

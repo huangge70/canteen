@@ -1,6 +1,7 @@
 package com.canteen.dao;
 
 import com.canteen.pojo.Booking;
+import com.canteen.pojo.Salestatistics;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface BookingMapper {
     List<Booking> selectTakeaway();
 
     List<Booking> selectMyOrder(int uid);
+
+    List<Salestatistics> salestatistics();
 }

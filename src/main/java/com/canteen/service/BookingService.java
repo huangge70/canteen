@@ -1,6 +1,7 @@
 package com.canteen.service;
 
 import com.canteen.pojo.Booking;
+import com.canteen.pojo.Salestatistics;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface BookingService {
     Booking selectByPrimarykey(int id);
 
     int update(Booking booking);
+
+    List<Salestatistics> salestatistics();
 }

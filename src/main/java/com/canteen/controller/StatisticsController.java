@@ -1,6 +1,8 @@
 package com.canteen.controller;
 
 import com.canteen.pojo.Detail;
+import com.canteen.pojo.Salestatistics;
+import com.canteen.service.BookingService;
 import com.canteen.service.DetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import java.util.Map;
 public class StatisticsController {
     @Autowired
     private DetailService detailService;
+    @Autowired
+    private BookingService bookingService;
 
     @RequestMapping("/dishcount")
     @ResponseBody
@@ -29,6 +33,22 @@ public class StatisticsController {
         for(Detail detail:list){
             catogory.add(detail.getDish());
             data.add(detail.getCount());
+        }
+        result.put("categories",catogory);
+        result.put("data",data);
+        return result;
+    }
+
+    @RequestMapping("/salestatistics")
+    @ResponseBody
+    public Map<String,List<Object>> salestatistics(){
+        List<Salestatistics> list=bookingService.salestatistics();
+        Map<String,List<Object>> result=new HashMap<>();
+        List<Object> catogory=new ArrayList<>();
+        List<Object> data=new ArrayList<>();
+        for(Salestatistics salestatistics:list){
+            catogory.add(salestatistics.getMonth());
+            data.add(salestatistics.getSum());
         }
         result.put("categories",catogory);
         result.put("data",data);

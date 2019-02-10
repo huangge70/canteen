@@ -29,4 +29,14 @@ public class PageController {
     public String dishcount(){
         return "admin/dishcount";
     }
+
+    @RequestMapping("/salestatistics")
+    public String salestatistics(){
+        return "admin/salestatistics";
+    }
+
+    @RequestMapping("/myerror")
+    public String error(){
+        return "error";
+    }
 }

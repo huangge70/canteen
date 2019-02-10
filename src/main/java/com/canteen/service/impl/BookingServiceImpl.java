@@ -2,6 +2,7 @@ package com.canteen.service.impl;
 
 import com.canteen.dao.BookingMapper;
 import com.canteen.pojo.Booking;
+import com.canteen.pojo.Salestatistics;
 import com.canteen.service.BookingService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -67,6 +68,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public int update(Booking booking) {
         return bookingMapper.updateByPrimaryKey(booking);
+    }
+
+    @Override
+    public List<Salestatistics> salestatistics() {
+        return bookingMapper.salestatistics();
     }
 
 
