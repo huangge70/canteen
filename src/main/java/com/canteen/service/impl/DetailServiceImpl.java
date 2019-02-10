@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DetailServiceImpl implements DetailService {
@@ -25,5 +26,10 @@ public class DetailServiceImpl implements DetailService {
     @Override
     public int deleteBookingDetails(Integer oid) {
         return detailMapper.deleteBookingDetails(oid);
+    }
+
+    @Override
+    public List<Detail> dishcount() {
+        return detailMapper.dishcount();
     }
 }

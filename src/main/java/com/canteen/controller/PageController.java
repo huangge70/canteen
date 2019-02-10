@@ -24,4 +24,9 @@ public class PageController {
     public String result(){
         return "admin/result";
     }
+
+    @RequestMapping("/dishcount")
+    public String dishcount(){
+        return "admin/dishcount";
+    }
 }

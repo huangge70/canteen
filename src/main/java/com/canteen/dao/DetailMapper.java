@@ -4,6 +4,7 @@ import com.canteen.pojo.Detail;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface DetailMapper {
@@ -22,4 +23,6 @@ public interface DetailMapper {
     List<Detail> selectBookingDetails(Integer oid);
 
     int deleteBookingDetails(Integer oid);
+
+    List<Detail> dishcount();
 }

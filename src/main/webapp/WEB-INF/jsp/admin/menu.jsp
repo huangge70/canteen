@@ -74,14 +74,10 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="/dishcount" >
                         <i class="fa fa-th"></i>
-                        <span>Data Tables</span>
+                        <span>菜品销售量统计</span>
                     </a>
-                    <ul class="sub">
-                        <li><a  href="menumanagement.jsp">Basic Table</a></li>
-                        <li><a  href="responsive_table.html">Responsive Table</a></li>
-                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" >

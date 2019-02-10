@@ -124,4 +124,7 @@
     delete from detail
     where oid=#{oid} and type=0
   </delete>
+  <select id="dishcount" resultMap="BaseResultMap">
+    select dish,sum(count) as count from detail GROUP BY dish
+  </select>
 </mapper>
