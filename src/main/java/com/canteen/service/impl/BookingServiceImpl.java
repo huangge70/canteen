@@ -43,6 +43,11 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public List<Booking> selectmybooking(Integer uid) {
+        return bookingMapper.selectMyBooking(uid);
+    }
+
+    @Override
     public int delete(Integer id) {
         return bookingMapper.deleteByPrimaryKey(id);
     }
@@ -73,6 +78,16 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public List<Salestatistics> salestatistics() {
         return bookingMapper.salestatistics();
+    }
+
+    @Override
+    public List<Booking> selectUnresolve() {
+        return bookingMapper.selectUnresolve();
+    }
+
+    @Override
+    public List<Booking> selectAllTakeaway() {
+        return bookingMapper.selectTakeaway();
     }
 
 

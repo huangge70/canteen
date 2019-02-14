@@ -26,4 +26,9 @@ public class EvaluationServiceImpl implements EvaluationService {
         PageInfo<Evaluation> pageInfo=new PageInfo<>(list);
         return pageInfo;
     }
+
+    @Override
+    public List<Evaluation> selectNew5() {
+        return evaluationMapper.selectNew5();
+    }
 }

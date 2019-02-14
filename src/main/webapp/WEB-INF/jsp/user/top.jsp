@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -50,56 +51,29 @@
                     <li class="nav-item dropdown hidden-caret">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="la la-bell"></i>
-                            <span class="notification">3</span>
+                            <span class="notification">${fn:length(myorders)}</span>
                         </a>
                         <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
                             <li>
-                                <div class="dropdown-title">You have 4 new notification</div>
+                                <div class="dropdown-title">我的订单</div>
                             </li>
+                            <c:forEach items="${myorders}" var="booking">
                             <li>
                                 <div class="notif-center">
                                     <a href="#">
-                                        <div class="notif-icon notif-primary"> <i class="la la-user-plus"></i> </div>
                                         <div class="notif-content">
 												<span class="block">
-													New user registered
+													&nbsp;&nbsp;订单创建时间:
+                                                    <fmt:formatDate value="${booking.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 												</span>
-                                            <span class="time">5 minutes ago</span>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
-                                        <div class="notif-content">
-												<span class="block">
-													Rahmad commented on Admin
-												</span>
-                                            <span class="time">12 minutes ago</span>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="notif-img">
-                                            <img src="/static/images/${user.avatar}" alt="Img Profile">
-                                        </div>
-                                        <div class="notif-content">
-												<span class="block">
-													Reza send messages to you
-												</span>
-                                            <span class="time">12 minutes ago</span>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
-                                        <div class="notif-content">
-												<span class="block">
-													Farrah liked Admin
-												</span>
-                                            <span class="time">17 minutes ago</span>
+                                            <span class="time">&nbsp;&nbsp;订单状态:${booking.status}</span>
                                         </div>
                                     </a>
                                 </div>
                             </li>
+                            </c:forEach>
                             <li>
-                                <a class="see-all" href="javascript:void(0);"> <strong>See all notifications</strong> <i class="la la-angle-right"></i> </a>
+                                <a class="see-all" href="javascript:void(0);"> <strong>See all orders</strong> <i class="la la-angle-right"></i> </a>
                             </li>
                         </ul>
                     </li>

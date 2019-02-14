@@ -20,4 +20,6 @@ public interface EvaluationMapper {
     int updateByPrimaryKey(Evaluation record);
 
     List<Evaluation> selectAll();
+
+    List<Evaluation> selectNew5();
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,134 +25,54 @@
             <ul class="nav top-menu">
                 <!-- settings start -->
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="fa fa-tasks"></i>
-                        <span class="badge bg-theme">4</span>
+                        <span class="badge bg-theme">${fn:length(unresolveorder)}</span>
                     </a>
                     <ul class="dropdown-menu extended tasks-bar">
                         <div class="notify-arrow notify-arrow-green"></div>
                         <li>
-                            <p class="green">You have 4 pending tasks</p>
+                            <p class="green">You have ${fn:length(unresolveorder)} new orders</p>
                         </li>
+                        <c:forEach items="${unresolveorder}" var="booking">
                         <li>
-                            <a href="index.html#">
+                            <a href="#">
                                 <div class="task-info">
-                                    <div class="desc">DashGum Admin Panel</div>
-                                    <div class="percent">40%</div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                        <span class="sr-only">40% Complete (success)</span>
-                                    </div>
+                                    <div class="desc">订餐人:${booking.uname}</div>
+                                    <div class="desc">订单创建时间:<fmt:formatDate value="${booking.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="index.html#">
-                                <div class="task-info">
-                                    <div class="desc">Database Update</div>
-                                    <div class="percent">60%</div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                        <span class="sr-only">60% Complete (warning)</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html#">
-                                <div class="task-info">
-                                    <div class="desc">Product Development</div>
-                                    <div class="percent">80%</div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                        <span class="sr-only">80% Complete</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html#">
-                                <div class="task-info">
-                                    <div class="desc">Payments Sent</div>
-                                    <div class="percent">70%</div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                        <span class="sr-only">70% Complete (Important)</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                        </c:forEach>
                         <li class="external">
-                            <a href="#">See All Tasks</a>
+                            <a href="#">See All Orders</a>
                         </li>
                     </ul>
                 </li>
                 <!-- settings end -->
                 <!-- inbox dropdown start-->
                 <li id="header_inbox_bar" class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-theme">5</span>
+                        <span class="badge bg-theme">${fn:length(evaluations)}</span>
                     </a>
                     <ul class="dropdown-menu extended inbox">
                         <div class="notify-arrow notify-arrow-green"></div>
                         <li>
-                            <p class="green">You have 5 new messages</p>
+                            <p class="green">You have ${fn:length(evaluations)} new evaluations</p>
                         </li>
+                        <c:forEach items="${evaluations}" var="evaluation">
                         <li>
-                            <a href="index.html#">
-                                <span class="photo"><img alt="avatar" src="/static/admin_assets/img/ui-zac.jpg"></span>
-                                <span class="subject">
-                                    <span class="from">Zac Snider</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                <span class="message">
-                                        Hi mate, how is everything?
-                                    </span>
+                            <a href="#">
+                                <div class="task-info">
+                                    <div class="desc">订单号:${evaluation.oid}</div>
+                                    <div class="desc">评价时间:<fmt:formatDate value="${evaluation.time}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+                                </div>
                             </a>
                         </li>
+                        </c:forEach>
                         <li>
-                            <a href="index.html#">
-                                <span class="photo"><img alt="avatar" src="/static/admin_assets/img/ui-divya.jpg"></span>
-                                <span class="subject">
-                                    <span class="from">Divya Manian</span>
-                                    <span class="time">40 mins.</span>
-                                    </span>
-                                <span class="message">
-                                     Hi, I need your help with this.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html#">
-                                <span class="photo"><img alt="avatar" src="/static/admin_assets/img/ui-danro.jpg"></span>
-                                <span class="subject">
-                                    <span class="from">Dan Rogers</span>
-                                    <span class="time">2 hrs.</span>
-                                    </span>
-                                <span class="message">
-                                        Love your new Dashboard.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html#">
-                                <span class="photo"><img alt="avatar" src="/static/admin_assets/img/ui-sherman.jpg"></span>
-                                <span class="subject">
-                                    <span class="from">Dj Sherman</span>
-                                    <span class="time">4 hrs.</span>
-                                    </span>
-                                <span class="message">
-                                        Please, answer asap.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html#">See all messages</a>
+                            <a href="/evaluation/showevaluation">See all evaluations</a>
                         </li>
                     </ul>
                 </li>

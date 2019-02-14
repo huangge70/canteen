@@ -70,14 +70,16 @@ public class UserController {
        }
        if(user.getRole()==0){//正在登录的用户类型为管理员的情况
             request.getSession().setAttribute("admin",selUser);
-            return "admin/index";
+            //return "admin/index";
+            return "forward:/admin";
        }else{//正在登录的用户类型为普通用户的情况
             if(selUser.getStatus()==0){//用户还未审核通过
                 model.addAttribute("message","您没有登录权限！");
                 return "index";
             }else{
                 request.getSession().setAttribute("user",selUser);
-                return "user/index";
+                //return "user/index";
+                return "forward:/user";
             }
        }
     }

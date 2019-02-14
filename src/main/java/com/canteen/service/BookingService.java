@@ -15,6 +15,8 @@ public interface BookingService {
 
     PageInfo<Booking> selectMyBooking(Integer uid,int pageNo,int pageSize);
 
+    List<Booking> selectmybooking(Integer uid);
+
     int delete(Integer id);
 
     PageInfo<Booking> selectTakeaway(int pageNo,int pageSize);
@@ -26,4 +28,8 @@ public interface BookingService {
     int update(Booking booking);
 
     List<Salestatistics> salestatistics();
+
+    List<Booking> selectUnresolve();
+
+    List<Booking> selectAllTakeaway();
 }

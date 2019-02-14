@@ -152,4 +152,10 @@
   <select id="salestatistics" resultType="com.canteen.pojo.Salestatistics">
     select month(createtime) as month,sum(price) as sum from booking GROUP BY month
   </select>
+  <select id="selectUnresolve" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from booking
+    where status='待处理'
+  </select>
 </mapper>

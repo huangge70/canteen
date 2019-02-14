@@ -31,4 +31,6 @@ public interface BookingMapper {
     List<Booking> selectMyOrder(int uid);
 
     List<Salestatistics> salestatistics();
+
+    List<Booking> selectUnresolve();
 }
