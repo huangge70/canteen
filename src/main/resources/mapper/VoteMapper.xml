@@ -99,6 +99,6 @@
   </select>
 
   <select id="selectResult" resultType="com.canteen.pojo.Result">
-    select dname,SUM(count) as count from vote GROUP by did,date
+    select dname,SUM(count) as count from vote GROUP by did
   </select>
 </mapper>
