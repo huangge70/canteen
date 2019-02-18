@@ -78,7 +78,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="/static/user_assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >${user.username}</span></span> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="/static/images/keai.jpg" alt="user-img" width="36" class="img-circle"><span >${user.username}</span></span> </a>
                         <ul class="dropdown-menu dropdown-user">
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/user/selectById"><i class="ti-settings"></i> Personal</a>

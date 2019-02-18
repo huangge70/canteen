@@ -37,42 +37,37 @@
                     <a href="/vote/selectDish">
                         <i class="la la-dashboard"></i>
                         <p>菜品投票</p>
-                        <span class="badge badge-count">5</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/article/selectAll_user">
                         <i class="la la-table"></i>
                         <p>查看推送文章</p>
-                        <span class="badge badge-count">14</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/suggest/addpage">
                         <i class="la la-keyboard-o"></i>
                         <p>意见反馈</p>
-                        <span class="badge badge-count">50</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/menu/showmenu">
                         <i class="la la-th"></i>
                         <p>点餐</p>
-                        <span class="badge badge-count">6</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/order/cart">
                         <i class="la la-bell"></i>
                         <p>我的购物车</p>
-                        <span class="badge badge-success">3</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/order/showmybooking">
                         <i class="la la-font"></i>
                         <p>我的预定</p>
-                        <span class="badge badge-danger">25</span>
+                        <span class="badge badge-danger">${mybookingcount}</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -85,12 +80,14 @@
                     <a href="/order/recievedorder">
                         <i class="la la-chrome"></i>
                         <p>已接订单</p>
+                        <span class="badge badge-danger">${myrecivedordercount}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/order/myorder">
                         <i class="la la-send"></i>
                         <p>我的订单</p>
+                        <span class="badge badge-danger">${myordercount}</span>
                     </a>
                 </li>
                 <li class="nav-item update-pro">

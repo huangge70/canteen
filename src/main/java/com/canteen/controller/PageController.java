@@ -1,9 +1,6 @@
 package com.canteen.controller;
 
-import com.canteen.pojo.Booking;
-import com.canteen.pojo.Evaluation;
-import com.canteen.pojo.Takeaway;
-import com.canteen.pojo.User;
+import com.canteen.pojo.*;
 import com.canteen.service.BookingService;
 import com.canteen.service.EvaluationService;
 import com.canteen.service.TakeawayService;
@@ -60,6 +57,14 @@ public class PageController {
             orders.add(booking);
         }
         request.getSession().setAttribute("myorders",orders);
+
+        //设置菜单栏的数字
+        List<Booking> mybooking=bookingService.selectmybooking(user.getId());
+        request.getSession().setAttribute("mybookingcount",mybooking.size());
+        List<Takeaway> recivedorder=takeawayService.selectByDelivery(user.getId());
+        request.getSession().setAttribute("myrecivedordercount",recivedorder.size());
+        List<Booking> myorder=bookingService.selectMyOrder(user.getId());
+        request.getSession().setAttribute("myordercount",myorder.size());
         return "user/index";
     }
 
