@@ -3,6 +3,8 @@ package com.canteen.controller;
 import com.canteen.dto.BookingDto;
 import com.canteen.pojo.*;
 import com.canteen.service.*;
+import com.canteen.util.WebSocket;
+import com.canteen.util.WebSocketListen;
 import com.github.pagehelper.PageInfo;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.BeanUtils;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -82,7 +85,7 @@ public class OrderController {
 
     @RequestMapping("/booking")
     @Transactional
-    public String booking(String time,Model model,HttpServletRequest request) throws ParseException {
+    public String booking(String time,Model model,HttpServletRequest request) throws ParseException, IOException {
         User user= (User) request.getSession().getAttribute("user");
         Date date=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -124,12 +127,17 @@ public class OrderController {
         userService.updateUser(user);
         request.getSession().removeAttribute("cart");//删除缓存中购物车信息
         model.addAttribute("message","结算成功！");
+
+        //todo
+//        WebSocketListen ws = new WebSocketListen();
+//        ws.sendMessage("您有新的订单，请尽快处理！");
+
         return "user/cart";
     }
 
     @RequestMapping("/takeaway")
     @Transactional
-    public String takeaway(String address,double reward,Model model,HttpServletRequest request) throws ParseException {
+    public String takeaway(String address,double reward,Model model,HttpServletRequest request) throws ParseException, IOException {
         User user= (User) request.getSession().getAttribute("user");
         Date date=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -182,6 +190,11 @@ public class OrderController {
         userService.updateUser(user);
         request.getSession().removeAttribute("cart");//删除缓存中购物车信息
         model.addAttribute("message","结算成功！");
+
+        //todo
+//        WebSocketListen ws = new WebSocketListen();
+//        ws.sendMessage("您有新的订单，请尽快处理！");
+
         return "user/cart";
     }
 

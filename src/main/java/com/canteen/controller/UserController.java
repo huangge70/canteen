@@ -43,6 +43,7 @@ public class UserController {
             return "index";
         }else{//参数校验通过
             String filename=file.getOriginalFilename();
+            //todo:注意修改头像上传的地址
             File destFile = new File("G:\\idea_workspace\\canteen\\src\\main\\resources\\static\\images\\"+filename);
             try {
                 file.transferTo(destFile);
