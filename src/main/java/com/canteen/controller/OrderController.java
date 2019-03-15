@@ -3,10 +3,8 @@ package com.canteen.controller;
 import com.canteen.dto.BookingDto;
 import com.canteen.pojo.*;
 import com.canteen.service.*;
-import com.canteen.util.WebSocket;
-import com.canteen.util.WebSocketListen;
+import com.canteen.util.MyWebSocket;
 import com.github.pagehelper.PageInfo;
-import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.Session;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -129,8 +128,8 @@ public class OrderController {
         model.addAttribute("message","结算成功！");
 
         //todo
-//        WebSocketListen ws = new WebSocketListen();
-//        ws.sendMessage("您有新的订单，请尽快处理！");
+        MyWebSocket socket=new MyWebSocket();
+        socket.sendInfo("您有新订单了，请尽快处理!");
 
         return "user/cart";
     }
@@ -192,8 +191,8 @@ public class OrderController {
         model.addAttribute("message","结算成功！");
 
         //todo
-//        WebSocketListen ws = new WebSocketListen();
-//        ws.sendMessage("您有新的订单，请尽快处理！");
+        MyWebSocket socket=new MyWebSocket();
+        socket.sendInfo("您有新订单了，请尽快处理!");
 
         return "user/cart";
     }
