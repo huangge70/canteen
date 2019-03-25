@@ -39,6 +39,7 @@ public class MenuController {
            return "admin/menumanagement";
        }else{//参数校验通过
            String filename=file.getOriginalFilename();
+           //System.out.print(request.getContextPath());
            File destFile = new File("G:\\idea_workspace\\canteen\\src\\main\\resources\\static\\images\\"+filename);
            try {
                file.transferTo(destFile);

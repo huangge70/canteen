@@ -57,8 +57,8 @@
                           <table class="table table-striped table-advance table-hover">
 	                  	  	  <h4><i class="fa fa-angle-right"></i> 预定订单</h4>
 
-                              <div id="message"></div>
 
+                              <div id="message"></div>
 	                  	  	  <hr>
                               <thead>
                               <tr>

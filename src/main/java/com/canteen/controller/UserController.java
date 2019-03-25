@@ -4,6 +4,7 @@ import com.canteen.pojo.Dish;
 import com.canteen.pojo.User;
 import com.canteen.service.UserService;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -34,6 +35,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //测试工具类中自带的md5加密算法
+    public static void main(String[] args) {
+        String password="123";
+        String encodePass= DigestUtils.md5Hex(password);
+        System.out.print(encodePass);
+    }
+
     @RequestMapping("/register")
     public String register(HttpServletRequest request, @RequestParam("file") MultipartFile file, @Valid User user, BindingResult bindingResult, Model model){
 
@@ -51,6 +59,7 @@ public class UserController {
                 model.addAttribute("message","上传头像失败！");
                 return "index";
             }
+            user.setPassword(DigestUtils.md5Hex(user.getPassword()));
             user.setAvatar(filename);//设置用户头像图片名
             user.setRole(1);//设置用户角色为普通用户
             user.setStatus(0);//设置用户状态为不可用
@@ -72,8 +81,9 @@ public class UserController {
             model.addAttribute("message","请正确输入用户名密码！");
             return "index";
         }
+        user.setPassword(DigestUtils.md5Hex(user.getPassword()));
         User selUser=userService.selectByParam(user);
-        System.out.println(selUser.toString());
+        //System.out.println(selUser.toString());
        if(selUser==null){//没有在数据库中查询到用户
            model.addAttribute("message","用户名或密码错误，请稍后重试！");
            return "index";
@@ -252,7 +262,5 @@ public class UserController {
 
     }
 
-    public static void main(String[] args){
-        System.out.println(StringUtils.isEmpty(""));
-    }
+
 }
