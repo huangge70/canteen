@@ -47,4 +47,9 @@ public class MenuServiceImpl implements MenuService {
     public List<Dish> selectActive() {
         return dishMapper.selectActive();
     }
+
+    @Override
+    public List<String> selectDishnameByOrderId(List<Integer> orderIdList) {
+        return dishMapper.selectDishNameByOrderId(orderIdList);
+    }
 }

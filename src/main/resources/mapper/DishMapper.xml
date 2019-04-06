@@ -125,4 +125,11 @@
     from dish
     where status=1
   </select>
+  <select id="selectDishNameByOrderId" resultType="string">
+    select dish from detail where oid in
+    <foreach collection="orderId" item="oid" separator="," open="(" close=")">
+      #{oid}
+    </foreach>
+     group by dish order by count(*) desc
+  </select>
 </mapper>

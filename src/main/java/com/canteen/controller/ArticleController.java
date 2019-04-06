@@ -67,7 +67,7 @@ public class ArticleController {
     @RequestMapping("/add")
     public String add(HttpServletRequest request, @RequestParam("file") MultipartFile file,Article article,Model model) throws ParseException {
         String filename=file.getOriginalFilename();
-        File destFile = new File("G:\\idea_workspace\\canteen\\src\\main\\resources\\static\\images\\"+filename);
+        File destFile = new File("E:\\idea_workspace\\canteen\\src\\main\\resources\\static\\images\\"+filename);
         try {
             file.transferTo(destFile);
         } catch (IOException e) {//图片上传失败

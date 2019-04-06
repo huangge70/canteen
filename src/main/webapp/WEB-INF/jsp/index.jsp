@@ -148,8 +148,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		                    <p>宫保鸡丁选用鸡肉为主料，佐以花生米、黄瓜、辣椒等辅料烹制而成。 红而不辣、辣而不猛、香辣味浓、肉质滑脆。由于其入口鲜辣，鸡肉的鲜嫩配合花生的香脆。</p>
 		
-		                    <p><a class="btn btn-lg btn-primary" href="http://www.google.cn/intl/zh-CN/chrome/browser/"
-		                          role="button" target="_blank">立即点餐</a></p>
+		                    <p><a class="btn btn-lg btn-primary"
+		                          role="button" href="/gotomenu">立即点餐</a></p>
 		                </div>
 		            </div>
 		        </div>
@@ -162,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		                    <p>鱼香肉丝就其材料非常简单，所以是家居生活中不可缺的菜色之一，而且其味酸甜鲜辣，适合大部分人的口味！</p>
 		
-		                    <p><a class="btn btn-lg btn-primary" href="http://www.firefox.com.cn/download/" target="_blank"
+		                    <p><a class="btn btn-lg btn-primary" href="/gotomenu"
 		                          role="button">立即点餐</a></p>
 		                </div>
 		            </div>
@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		                    <p>红烧肉的烹饪技巧，锅具以砂锅为主，做出来的肉肥瘦相间，香甜松软，入口即化。红烧肉在我国各地流传甚广，具有一定的营养价值。</p>
 		
-		                    <p><a class="btn btn-lg btn-primary" href="http://www.apple.com/cn/safari/" target="_blank"
+		                    <p><a class="btn btn-lg btn-primary" href="/gotomenu"
 		                          role="button">立即点餐</a></p>
 		                </div>
 		            </div>
@@ -190,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		                    <p>水煮鱼通常由新鲜草鱼、豆芽、辣椒等食材制作而成。“油而不腻、辣而不燥、麻而不苦、肉质滑嫩”是其特色。</p>
 		
-		                    <p><a class="btn btn-lg btn-primary" href="http://www.opera.com/zh-cn" target="_blank"
+		                    <p><a class="btn btn-lg btn-primary" href="/gotomenu"
 		                          role="button">立即点餐</a></p>
 		                </div>
 		            </div>
@@ -204,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		                    <p>毛血旺以鸭血为制作主料，烹饪技巧以煮菜为主，口味属于麻辣味。起源于重庆，流行于重庆和西南地区，是一道著名的传统菜式。这道菜是将生血旺现烫现吃，且毛肚杂碎为主料，遂得名。</p>
 		
-		                    <p><a class="btn btn-lg btn-primary" href="http://ie.microsoft.com/" target="_blank"
+		                    <p><a class="btn btn-lg btn-primary" href="/gotomenu"
 		                          role="button">立即点餐</a></p>
 		                </div>
 		            </div>

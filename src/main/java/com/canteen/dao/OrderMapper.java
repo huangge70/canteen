@@ -1,6 +1,9 @@
 package com.canteen.dao;
 
 import com.canteen.pojo.Order;
+import com.canteen.pojo.User;
+
+import java.util.List;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    List<Integer> selectUserOrder(User user);
 }

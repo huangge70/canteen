@@ -63,6 +63,7 @@
                       legend: {
                           data:['菜品名称']
                       },
+
                       xAxis: {
                           data: []
                       },

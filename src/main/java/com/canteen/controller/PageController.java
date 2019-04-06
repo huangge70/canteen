@@ -6,6 +6,7 @@ import com.canteen.service.EvaluationService;
 import com.canteen.service.TakeawayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,5 +87,17 @@ public class PageController {
     @RequestMapping("/myerror")
     public String error(){
         return "error";
+    }
+
+    @RequestMapping("/gotomenu")
+    public String gotomenu(HttpServletRequest request, Model model){
+        User user= (User) request.getSession().getAttribute("user");
+        if(user==null){//用户没有登录，提示用户先登录
+            model.addAttribute("message","您还没有登录，请先登录！");
+            return "index";
+        }else {
+            return "redirect:/menu/showmenu";
+        }
+
     }
 }

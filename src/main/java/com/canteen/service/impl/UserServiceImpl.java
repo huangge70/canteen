@@ -1,5 +1,6 @@
 package com.canteen.service.impl;
 
+import com.canteen.dao.OrderMapper;
 import com.canteen.dao.UserMapper;
 import com.canteen.pojo.Dish;
 import com.canteen.pojo.User;
@@ -15,6 +16,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private OrderMapper orderMapper;
+
     @Override
     public int insertUser(User user) {
         return userMapper.insert(user);
@@ -42,5 +47,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User selectById(Integer id) {
         return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Integer> selectUserOrder(User user) {
+        return orderMapper.selectUserOrder(user);
     }
 }

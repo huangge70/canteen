@@ -43,6 +43,9 @@ public class StatisticsController {
     @ResponseBody
     public Map<String,List<Object>> salestatistics(){
         List<Salestatistics> list=bookingService.salestatistics();
+//        for(int i=0;i<list.size();i++){
+//            System.out.println(list.get(i));
+//        }
         Map<String,List<Object>> result=new HashMap<>();
         List<Object> catogory=new ArrayList<>();
         List<Object> data=new ArrayList<>();

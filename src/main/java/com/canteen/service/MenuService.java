@@ -17,4 +17,6 @@ public interface MenuService {
     int update(Dish dish);
 
     List<Dish> selectActive();
+
+    List<String> selectDishnameByOrderId(List<Integer> orderIdList);
 }

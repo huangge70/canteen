@@ -2,6 +2,7 @@ package com.canteen.dao;
 
 import com.canteen.pojo.Dish;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface DishMapper {
     List<Dish> selectAll();
 
     List<Dish> selectActive();
+
+    List<String> selectDishNameByOrderId(@Param("orderId") List<Integer> orderId);
 }
