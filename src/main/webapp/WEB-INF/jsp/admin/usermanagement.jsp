@@ -60,7 +60,7 @@
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> ID</th>
+                                  <th><i class="fa fa-bullhorn"></i> 序号</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> 用户名</th>
                                   <th><i class="fa fa-bookmark"></i> 真实姓名</th>
                                   <th><i class="fa fa-edit"></i> 手机号</th>
@@ -69,9 +69,9 @@
                               </tr>
                               </thead>
                               <tbody>
-                              <c:forEach items="${pageInfo.list}" var="user">
+                              <c:forEach items="${pageInfo.list}" var="user" varStatus="status">
                                   <tr>
-                                      <td>${user.id}</td>
+                                      <td>${status.count}</td>
                                       <td>${user.username}</td>
                                       <td>${user.realname} </td>
                                       <td>${user.phone} </td>

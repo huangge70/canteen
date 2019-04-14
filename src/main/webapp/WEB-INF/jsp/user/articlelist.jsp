@@ -33,10 +33,10 @@
 								<th scope="col">查看</th>
 							</tr>
 							</thead>
-							<c:forEach items="${pageInfo.list}" var="article">
+							<c:forEach items="${pageInfo.list}" var="article" varStatus="status">
 							<tbody>
 							<tr>
-								<td>${article.id}</td>
+								<td>${status.count}</td>
 								<td>${article.title}</td>
 								<td><fmt:formatDate value="${article.time}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
 								<td><a class="btn btn-success" href="/article/selectById?id=${article.id}">查看详情</a></td>

@@ -61,16 +61,16 @@
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> ID</th>
+                                  <th><i class="fa fa-bullhorn"></i> 序号</th>
                                   <th><i class="fa fa-question-circle"></i> 文章标题</th>
                                   <th><i class="fa fa-bookmark"></i> 发布时间</th>
                                   <th><i class="fa fa-edit"></i> 操作</th>
                               </tr>
                               </thead>
                               <tbody>
-                              <c:forEach items="${pageInfo.list}" var="article">
+                              <c:forEach items="${pageInfo.list}" var="article" varStatus="status">
                                   <tr>
-                                      <td>${article.id}</td>
+                                      <td>${status.count}</td>
                                       <td>${article.title}</td>
                                       <td><fmt:formatDate value="${article.time}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
                                       <td>

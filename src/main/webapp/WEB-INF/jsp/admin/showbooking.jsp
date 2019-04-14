@@ -61,7 +61,7 @@
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> ID</th>
+                                  <th><i class="fa fa-bullhorn"></i> 序号</th>
                                   <th><i class="fa fa-question-circle"></i> 订餐人</th>
                                   <th><i class="fa fa-bookmark"></i> 取餐时间</th>
                                   <th><i class="fa fa-edit"></i> 订单金额</th>
@@ -70,9 +70,9 @@
                               </tr>
                               </thead>
                               <tbody>
-                              <c:forEach items="${bookings}" var="booking">
+                              <c:forEach items="${bookings}" var="booking" varStatus="status">
                                   <tr>
-                                      <td>${booking.id}</td>
+                                      <td>${status.count}</td>
                                       <td>${booking.uname}</td>
                                       <td><fmt:formatDate value="${booking.time}" pattern="HH:mm:ss"/> </td>
                                       <td>${booking.price}</td>

@@ -59,16 +59,16 @@
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> ID</th>
+                                  <th><i class="fa fa-bullhorn"></i> 序号</th>
                                   <th><i class="fa fa-question-circle"></i> 提交人</th>
                                   <th><i class="fa fa-bookmark"></i> 内容</th>
                                   <th><i class="fa fa-edit"></i> 提交时间</th>
                               </tr>
                               </thead>
                               <tbody>
-                              <c:forEach items="${pageInfo.list}" var="suggest">
+                              <c:forEach items="${pageInfo.list}" var="suggest" varStatus="status">
                                   <tr>
-                                      <td>${suggest.id}</td>
+                                      <td>${status.count}</td>
                                       <td>${suggest.uid}</td>
                                       <td>${suggest.content}</td>
                                       <td><fmt:formatDate value="${suggest.time}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>

@@ -60,7 +60,7 @@
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> ID</th>
+                                  <th><i class="fa fa-edit"></i>序号</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> 菜品名称</th>
                                   <th><i class="fa fa-bookmark"></i> 菜品类别</th>
                                   <th><i class="fa fa-edit"></i> 菜品价格</th>
@@ -70,9 +70,9 @@
                               </tr>
                               </thead>
                               <tbody>
-                              <c:forEach items="${pageInfo.list}" var="dish">
+                              <c:forEach items="${pageInfo.list}" var="dish" varStatus="status">
                                   <tr>
-                                      <td>${dish.id}</td>
+                                      <td>${status.count}</td>
                                       <td class="hidden-phone">${dish.name}</td>
                                       <td>${dish.type} </td>
                                       <td>${dish.price} </td>

@@ -59,16 +59,16 @@
 	                  	  	  <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> ID</th>
+                                  <th><i class="fa fa-bullhorn"></i> 序号</th>
                                   <th><i class="fa fa-question-circle"></i> 订单号</th>
                                   <th><i class="fa fa-bookmark"></i>评价内容</th>
                                   <th><i class="fa fa-edit"></i> 评价时间</th>
                               </tr>
                               </thead>
                               <tbody>
-                              <c:forEach items="${pageInfo.list}" var="evaluation">
+                              <c:forEach items="${pageInfo.list}" var="evaluation" varStatus="status">
                                   <tr>
-                                      <td>${evaluation.id}</td>
+                                      <td>${status.count}</td>
                                       <td>${evaluation.oid}</td>
                                       <td>${evaluation.content}</td>
                                       <td><fmt:formatDate value="${evaluation.time}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>

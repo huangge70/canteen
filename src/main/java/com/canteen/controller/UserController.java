@@ -37,9 +37,15 @@ public class UserController {
 
     //测试工具类中自带的md5加密算法
     public static void main(String[] args) {
-        String password="123";
+        String password="123456";
         String encodePass= DigestUtils.md5Hex(password);
         System.out.print(encodePass);
+    }
+
+    @RequestMapping("/test")
+    @ResponseBody
+    public String test(){
+        return "注册成功！";
     }
 
     @RequestMapping("/register")
