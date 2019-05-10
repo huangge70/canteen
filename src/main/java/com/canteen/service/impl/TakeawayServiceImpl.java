@@ -31,9 +31,9 @@ public class TakeawayServiceImpl implements TakeawayService {
     }
 
     @Override
-    public PageInfo<Takeaway> selectByParam(String address,int pageNo,int pageSize) {
+    public PageInfo<Takeaway> selectByParam(String address,int pageNo,int pageSize,String ophone) {
         PageHelper.startPage(pageNo,pageSize);
-        List<Takeaway> list= takeawayMapper.selectByParam(address);
+        List<Takeaway> list= takeawayMapper.selectByParam(address,ophone);
         PageInfo<Takeaway> pageInfo=new PageInfo<>(list);
         return pageInfo;
     }

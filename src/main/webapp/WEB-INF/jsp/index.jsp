@@ -333,7 +333,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<label for="address" class="col-sm-2 control-label">地址</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="address" name="address"
-									   placeholder="格式为公寓号,楼层,宿舍号">
+									   placeholder="格式为：公寓号,宿舍号">
 							</div>
 						</div>
 						<div class="form-group">

@@ -127,6 +127,7 @@
     from takeaway
     where address like #{address}
     and status='已完成'
+    and ophone!=#{ophone}
   </select>
   
   <select id="selectByDelivery" parameterType="map" resultMap="BaseResultMap">

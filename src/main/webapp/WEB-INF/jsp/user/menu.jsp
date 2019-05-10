@@ -18,7 +18,7 @@
             <div class="user">
                 <div class="photo">
 
-                    <img src="/static/images/keai.jpg">
+                    <img src="/static/images/keai.jpg" id="avatar2">
 
                 </div>
                 <div class="info">
@@ -86,7 +86,7 @@
                 <li class="nav-item">
                     <a href="/order/myorder">
                         <i class="la la-send"></i>
-                        <p>我的订单</p>
+                        <p>我的外卖</p>
                         <span class="badge badge-danger">${myordercount}</span>
                     </a>
                 </li>

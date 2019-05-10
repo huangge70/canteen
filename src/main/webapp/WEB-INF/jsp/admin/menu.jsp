@@ -58,7 +58,7 @@
                 <li class="sub-menu">
                     <a href="/order/showbooking" >
                         <i class="fa fa-tasks"></i>
-                        <span>查看预定</span>
+                        <span>查看预定订单</span>
                     </a>
                 </li>
                 <li class="sub-menu">
@@ -82,19 +82,8 @@
                 <li class="sub-menu">
                     <a href="/salestatistics" >
                         <i class="fa fa-bar-chart-o"></i>
-                        <span>销售额统计</span>
+                        <span>菜品销售额统计</span>
                     </a>
-                </li>
-
-                <li class="sub-menu">
-                    <a href="javascript:;" >
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>Charts</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a  href="morris.html">Morris</a></li>
-                        <li><a  href="chartjs.html">Chartjs</a></li>
-                    </ul>
                 </li>
 
             </ul>

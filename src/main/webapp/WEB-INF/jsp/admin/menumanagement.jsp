@@ -125,8 +125,12 @@
                                   <div class="form-group">
                                       <label for="type" class="col-sm-2 control-label">菜品类别</label>
                                       <div class="col-sm-10">
-                                          <input type="text" class="form-control" id="type" name="type"
-                                                 placeholder="请输入类别">
+                                          <select class="form-control" name="type" id="type">
+                                              <option value="川菜">川菜</option>
+                                              <option value="鲁菜">鲁菜</option>
+                                              <option value="粤菜">粤菜</option>
+                                              <option value="东北菜">东北菜</option>
+                                          </select>
                                       </div>
                                   </div>
                                   <div class="form-group">

@@ -12,7 +12,7 @@ public interface TakeawayService {
 
     Takeaway selectById(Integer id);
 
-    PageInfo<Takeaway> selectByParam(String address, int pageNo, int pageSize);
+    PageInfo<Takeaway> selectByParam(String address, int pageNo, int pageSize,String ophone);
 
     int update(Takeaway takeaway);
 

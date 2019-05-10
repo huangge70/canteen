@@ -1,8 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import="com.canteen.pojo.User" %>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String avatar="/static/images/"+((User)session.getAttribute("user")).getAvatar();
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -134,4 +136,13 @@
 <script src="/static/user_assets/js/plugin/chart-circle/circles.min.js"></script>
 <script src="/static/user_assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 <script src="/static/user_assets/js/ready.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        //var user = "<%=session.getAttribute("user")%>";
+        var avatar="<%=avatar%>";
+        //alert(avatar);
+        $('#avatar').attr('src',avatar);
+        $('#avatar2').attr('src',avatar);
+    });
+</script>
 </html>

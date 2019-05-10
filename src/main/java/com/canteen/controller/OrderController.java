@@ -346,7 +346,7 @@ public class OrderController {
     public String showorder(Model model,HttpServletRequest request,@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
         User user= (User) request.getSession().getAttribute("user");
         String address=user.getAddress().split(",")[0]+"%";
-        PageInfo<Takeaway> pageInfo=takeawayService.selectByParam(address,pageNo,pageSize);
+        PageInfo<Takeaway> pageInfo=takeawayService.selectByParam(address,pageNo,pageSize,user.getPhone());
         model.addAttribute("pageInfo",pageInfo);
         return "user/showorder";
     }
